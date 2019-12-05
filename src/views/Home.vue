@@ -1,18 +1,14 @@
 <template>
-  <vContainer>
+  <div class="home">
     <h1>Jean-Pauvre simulator</h1>
     <v-btn color="success" @click="foo">blabla</v-btn>
-    <SearchBar />
-  </vContainer>
+  </div>
 </template>
 
 <script>
-import SearchBar from "../components/SearchBar";
 export default {
   name: "home",
-  components: {
-    SearchBar
-  },
+  components: {},
   methods: {
     foo() {
       this.$store.dispatch("setStale", true);
