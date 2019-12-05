@@ -67,6 +67,28 @@ CREATE TRIGGER set_timestamp
     FOR EACH ROW
     EXECUTE PROCEDURE internal.trigger_set_timestamp();
 
+-- devices
+CREATE TABLE IF NOT EXISTS api.devices (
+  device_id seria PRIMARY KEY,
+  user_id integer NOT NULL REFERENCES api.users(user_id) ON DELETE CASCADE,
+  endpoint varchar(1024)
+);
+
+CREATE OR REPLACE FUNCTION new_notify()
+RETURNS trigger AS $$
+BEGIN
+   NOTIFY notif_new_post NEW.post_id;
+   RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER new_post
+  BEFORE INSERT ON api.posts
+  FOR EACH ROW
+  EXECUTE PROCEDURE internal.new_notif();
+
+
 -- permissions
 GRANT USAGE ON SCHEMA api TO anonymous;
 GRANT USAGE ON SCHEMA internal TO anonymous;
