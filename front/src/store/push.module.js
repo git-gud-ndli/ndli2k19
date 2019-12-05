@@ -74,7 +74,6 @@ export const push = {
     checkPushPermission: ({ dispatch }) => {
       localforage.getItem("push_enabled").then(val => {
         if (val === true) {
-          console.log("hooo");
           dispatch("setPushStatus", true);
         }
       });
@@ -96,29 +95,22 @@ export const push = {
               });
               if (sub) {
                 commit("setPush", true);
-                console.log("Already subscribed to Push");
               }
               configurePushSub(sub)
-                .then(data => {
-                  console.log(data);
+                .then(() => {
                   commit("setPush", true);
                   localforage.setItem("push_enabled", true);
                 })
-                .catch(err => {
-                  console.error(err);
-                });
+                .catch(() => {});
             }
           });
         } else {
           unsubscribeToPush()
-            .then(data => {
-              console.log(data);
+            .then(() => {
               commit("setPush", false);
               localforage.setItem("push_enabled", false);
             })
-            .catch(err => {
-              console.error(err);
-            });
+            .catch(() => {});
         }
       }
     }
