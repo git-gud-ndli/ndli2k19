@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Jean-Pauvre simulator</h1>
+    <v-btn color="success" @click="foo">blabla</v-btn>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "home",
-  components: {
-    HelloWorld
+  components: {},
+  methods: {
+    foo() {
+      this.$store.dispatch("setStale", true);
+    }
   }
 };
 </script>
