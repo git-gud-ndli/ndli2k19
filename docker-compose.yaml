@@ -38,6 +38,16 @@ services:
     ports:
     - 3000:3000
 
+  notifs:
+    build: notifs/
+    environment:
+      PGHOST: db
+      PGDATABASE: git-gud
+      PGUSER: git-gud
+      PGPASSWORD: git-gud
+    depends_on:
+    - migrations
+
       # front:
       #   build: front/
       #   ports:

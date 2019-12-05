@@ -1,0 +1,16 @@
+{
+  "name": "notifs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^7.14.0",
+    "pg-listen": "^1.5.0",
+    "web-push": "^3.4.2"
+  }
+}
