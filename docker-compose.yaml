@@ -4,16 +4,29 @@ services:
   db:
     image: postgres:12-alpine
     environment:
-      - POSTGRES_USER=git-gud
-      - POSTGRES_PASSWORD=git-gud
+    - POSTGRES_USER=git-gud
+    - POSTGRES_PASSWORD=git-gud
     ports:
-      - 5432:5432
+    - 5432:5432
 
-  db-migrations:
+  migrations:
     build: back/migrations/
     restart: "no"
     command:
-      - -database=postgres://git-gud:git-gud@db/git-gud?sslmode=disable
-      - up
+    - -database=postgres://git-gud:git-gud@db/git-gud?sslmode=disable
+    - up
     depends_on:
-      - db
+    - db
+
+  postgraphile:
+    image: graphile/postgraphile:4
+    environment:
+      PGHOST: db
+      PGDATABASE: git-gud
+      PGUSER: git-gud
+      PGPASSWORD: git-gud
+    depends_on:
+    - migrations
+    command: -s api -r anonymous
+    ports:
+    - 5000:5000
