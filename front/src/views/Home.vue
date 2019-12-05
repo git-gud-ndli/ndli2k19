@@ -7,11 +7,28 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
 import SearchBar from "../components/SearchBar";
 export default {
   name: "home",
   components: {
     SearchBar
+  },
+  apollo: {
+    hey: gql`
+      query {
+        allQuestions {
+          nodes {
+            title
+            author {
+              userId
+              avatar
+              name
+            }
+          }
+        }
+      }
+    `
   },
   methods: {
     foo() {
