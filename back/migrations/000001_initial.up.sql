@@ -83,3 +83,29 @@ CREATE TABLE IF NOT EXISTS internal.questions_tags (
   question_id integer NOT NULL REFERENCES internal.questions(question_id) ON DELETE CASCADE,
   tag_id integer NOT NULL REFERENCES internal.tags(tag_id) ON DELETE CASCADE
 );
+
+-- views
+CREATE OR REPLACE VIEW api.questions AS
+  SELECT
+    questions.question_id,
+    questions.post_id,
+    questions.title,
+    posts.created_at,
+    posts.updated_at,
+    posts.user_id,
+    posts.content
+  FROM internal.questions
+  JOIN internal.posts USING (post_id);
+
+CREATE OR REPLACE VIEW api.users AS
+  SELECT
+    users.user_id,
+    users.claim->>'picture' AS avatar,
+    users.claim->>'name' AS name
+  FROM internal.users;
+
+CREATE OR REPLACE FUNCTION api.questions_author(question api.questions)
+RETURNS api.users AS $$
+  SELECT * FROM api.users
+  WHERE question.user_id = users.user_id
+$$ LANGUAGE SQL STABLE;
