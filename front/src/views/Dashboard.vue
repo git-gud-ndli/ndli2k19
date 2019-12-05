@@ -26,6 +26,7 @@
     </v-layout>
   </v-container>
 </template>
+
 <script>
 import QuestionForm from "../components/QuestionForm";
 export default {
@@ -43,6 +44,7 @@ export default {
   }
 };
 </script>
+
 <style lang="sass" scoped>
 question-form
   margin-bottom: 10px
