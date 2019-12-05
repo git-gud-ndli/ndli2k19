@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import FetchWrapper from "./FetchWrapper";
 import vuetify from "./plugins/vuetify";
+import { createProvider } from "./vue-apollo";
 window.api = new FetchWrapper();
 
 Vue.config.productionTip = false;
@@ -33,5 +34,6 @@ new Vue({
   router,
   store,
   vuetify,
+  apolloProvider: createProvider(),
   render: h => h(App)
 }).$mount("#app");
