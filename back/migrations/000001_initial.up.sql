@@ -119,7 +119,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
 CREATE TRIGGER new_post
   BEFORE INSERT ON internal.posts
   FOR EACH ROW
@@ -130,12 +129,3 @@ RETURNS api.users AS $$
   SELECT * FROM api.users
   WHERE question.user_id = users.user_id
 $$ LANGUAGE SQL STABLE;
-
--- permissions
-GRANT USAGE ON SCHEMA api TO anonymous;
-GRANT USAGE ON SCHEMA internal TO anonymous;
-GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA api TO anonymous;
-GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA internal TO anonymous;
-GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA api TO anonymous;
-GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA internal TO anonymous;
-
