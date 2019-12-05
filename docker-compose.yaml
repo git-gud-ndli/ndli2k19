@@ -27,7 +27,7 @@ services:
       PGPASSWORD: git-gud
     depends_on:
     - migrations
-    command: -s internal -r anonymous
+    command: -s internal
     ports:
     - 5000:5000
 

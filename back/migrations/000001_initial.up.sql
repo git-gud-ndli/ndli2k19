@@ -2,9 +2,6 @@
 CREATE SCHEMA api;
 CREATE SCHEMA internal;
 
--- role creation
-CREATE ROLE anonymous;
-
 -- triggers
 CREATE FUNCTION internal.trigger_set_timestamp()
 RETURNS TRIGGER AS $$
@@ -86,7 +83,3 @@ CREATE TABLE IF NOT EXISTS internal.questions_tags (
   question_id integer NOT NULL REFERENCES internal.questions(question_id) ON DELETE CASCADE,
   tag_id integer NOT NULL REFERENCES internal.tags(tag_id) ON DELETE CASCADE
 );
-
--- permissions
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA api TO anonymous;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA internal TO anonymous;
