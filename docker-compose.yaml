@@ -19,7 +19,7 @@ services:
     - db
 
   postgraphile:
-    image: graphile/postgraphile:4
+    build: back/postgraphile/
     environment:
       PGHOST: db
       PGDATABASE: git-gud
