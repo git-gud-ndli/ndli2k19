@@ -19,19 +19,6 @@ services:
     - db
 
   postgraphile:
-    build: back/postgraphile/
-    environment:
-      PGHOST: db
-      PGDATABASE: git-gud
-      PGUSER: git-gud
-      PGPASSWORD: git-gud
-    depends_on:
-    - migrations
-    command: -s api
-    ports:
-    - 5000:5000
-
-  postgraphile:
     build: back/
     environment:
       DATABASE_URL: postgres://git-gud:git-gud@db/git-gud?sslmode=disable

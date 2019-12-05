@@ -11,6 +11,7 @@ const s = postgraphile(
     graphiql: true,
     enhanceGraphiql: true,
     ignoreRBAC: true,
+    enableCors: true,
   }
 );
 
