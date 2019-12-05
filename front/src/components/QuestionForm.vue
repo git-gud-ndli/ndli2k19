@@ -13,7 +13,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">User Profile</span>
+          <span class="headline">Posez votre question</span>
         </v-card-title>
         <v-card-text>
           <v-container>
