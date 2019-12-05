@@ -1,8 +1,8 @@
 -- seed users table
-INSERT INTO internal.users (user_id, claim) VALUES (1, '{"avatar":"toto.png","name":"toto"}');
-INSERT INTO internal.users (user_id, claim) VALUES (2, '{"avatar":"jdoe.png","name":"John Doe"}');
-INSERT INTO internal.users (user_id, claim) VALUES (3, '{"avatar":"aoe.png","name":"Wololo"}');
-INSERT INTO internal.users (user_id, claim) VALUES (4, '{"avatar":"default.png","name":"Default"}');
+INSERT INTO internal.users (user_id, claim) VALUES (1, '{"picture":"toto.png","name":"toto"}');
+INSERT INTO internal.users (user_id, claim) VALUES (2, '{"picture":"jdoe.png","name":"John Doe"}');
+INSERT INTO internal.users (user_id, claim) VALUES (3, '{"picture":"aoe.png","name":"Wololo"}');
+INSERT INTO internal.users (user_id, claim) VALUES (4, '{"picture":"default.png","name":"Default"}');
 
 -- seed tags
 INSERT INTO internal.tags (tag_id, name, slug) VALUES (1, 'CROUS', 'crous');

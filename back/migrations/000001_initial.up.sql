@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS api.devices (
 CREATE OR REPLACE FUNCTION internal.new_notify()
 RETURNS trigger AS $$
 BEGIN
-   PERFORM pg_notify('notif_new_post', NEW.post_id);
+   PERFORM pg_notify(CAST('notif_new_post' AS TEXT), NEW.post_id::TEXT);
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
