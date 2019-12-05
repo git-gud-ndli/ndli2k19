@@ -106,24 +106,24 @@ CREATE OR REPLACE VIEW api.users AS
 
 -- devices
 CREATE TABLE IF NOT EXISTS api.devices (
-  device_id seria PRIMARY KEY,
-  user_id integer NOT NULL REFERENCES api.users(user_id) ON DELETE CASCADE,
+  device_id serial PRIMARY KEY,
+  user_id integer NOT NULL REFERENCES internal.users(user_id) ON DELETE CASCADE,
   endpoint varchar(1024)
 );
 
-CREATE OR REPLACE FUNCTION new_notify()
+CREATE OR REPLACE FUNCTION internal.new_notify()
 RETURNS trigger AS $$
 BEGIN
-   NOTIFY notif_new_post NEW.post_id;
+   PERFORM pg_notify('notif_new_post', NEW.post_id);
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 
 CREATE TRIGGER new_post
-  BEFORE INSERT ON api.posts
+  BEFORE INSERT ON internal.posts
   FOR EACH ROW
-  EXECUTE PROCEDURE internal.new_notif();
+  EXECUTE PROCEDURE internal.new_notify();
 
 CREATE OR REPLACE FUNCTION api.questions_author(question api.questions)
 RETURNS api.users AS $$
