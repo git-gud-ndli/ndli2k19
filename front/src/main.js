@@ -9,17 +9,15 @@ import { createProvider } from "./vue-apollo";
 window.api = new FetchWrapper();
 
 Vue.config.productionTip = false;
-let deferredPrompt = null;
+//let deferredPrompt = null;
 window.addEventListener("beforeinstallprompt", e => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  console.log(deferredPrompt);
+  //  deferredPrompt = e;
   // store.dispatch('notifications/setInstallPrompt', deferredPrompt)
 });
 
 window.addEventListener("appinstalled", () => {
-  console.log("a2hs installed");
   // document.querySelector("#install-app-btn").style.display = "none";
 });
 
