@@ -1,6 +1,12 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
+      <v-flex xs12>
+        <question-form></question-form>
+      </v-flex>
+    </v-layout>
+
+    <v-layout row wrap>
       <v-flex xs12 sm4 v-for="t of tiles" :key="t.name">
         <v-hover>
           <v-card
@@ -21,9 +27,11 @@
   </v-container>
 </template>
 <script>
+import QuestionForm from "../components/QuestionForm";
 export default {
   name: "dashboard",
-  computed: {
+    components: {QuestionForm},
+    computed: {
     tiles() {
       return [
         { name: "Profile", icon: "mdi-account", url: "home" },
@@ -35,4 +43,7 @@ export default {
   }
 };
 </script>
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+question-form
+  margin-bottom: 10px
+</style>
