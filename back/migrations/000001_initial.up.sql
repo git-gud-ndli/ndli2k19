@@ -5,14 +5,6 @@ CREATE SCHEMA internal;
 -- role creation
 CREATE ROLE anonymous;
 
--- permissions
-GRANT USAGE ON SCHEMA api TO anonymous;
-GRANT USAGE ON SCHEMA internal TO anonymous;
-GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA api TO anonymous;
-GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA internal TO anonymous;
-GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA api TO anonymous;
-GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA internal TO anonymous;
-
 -- triggers
 CREATE FUNCTION internal.trigger_set_timestamp()
 RETURNS TRIGGER AS $$
@@ -74,3 +66,11 @@ CREATE TRIGGER set_timestamp
     BEFORE UPDATE ON api.answers
     FOR EACH ROW
     EXECUTE PROCEDURE internal.trigger_set_timestamp();
+
+-- permissions
+GRANT USAGE ON SCHEMA api TO anonymous;
+GRANT USAGE ON SCHEMA internal TO anonymous;
+GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA api TO anonymous;
+GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA internal TO anonymous;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA api TO anonymous;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA internal TO anonymous;
