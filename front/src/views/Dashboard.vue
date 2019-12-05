@@ -31,8 +31,8 @@
 import QuestionForm from "../components/QuestionForm";
 export default {
   name: "dashboard",
-    components: {QuestionForm},
-    computed: {
+  components: { QuestionForm },
+  computed: {
     tiles() {
       return [
         { name: "Profile", icon: "mdi-account", url: "home" },
