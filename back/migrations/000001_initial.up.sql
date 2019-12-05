@@ -14,7 +14,7 @@ $$ LANGUAGE plpgsql;
 -- users
 CREATE TABLE IF NOT EXISTS internal.users (
   user_id serial PRIMARY KEY,
-  claim jsonb NOT NULL,
+  claim jsonb NOT NULL DEFAULT '{}',
   created_at timestamptz NOT NULL DEFAULT NOW(),
   updated_at timestamptz NOT NULL DEFAULT NOW()
 );
@@ -103,6 +103,8 @@ CREATE OR REPLACE VIEW api.users AS
     users.claim->>'picture' AS avatar,
     users.claim->>'name' AS name
   FROM internal.users;
+COMMENT ON VIEW api.users IS
+  E'@omit create,update,delete';
 
 -- devices
 CREATE TABLE IF NOT EXISTS api.devices (
