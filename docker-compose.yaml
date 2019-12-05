@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=git-gud
+      - POSTGRES_PASSWORD=git-gud
+    ports:
+      - 5432:5432
+
+  db-migrations:
+    build: back/migrations/
+    restart: "no"
+    command:
+      - -database=postgres://git-gud:git-gud@db/git-gud?sslmode=disable
+      - up
+    depends_on:
+      - db
