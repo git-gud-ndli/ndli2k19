@@ -1,3 +1,2 @@
 DROP SCHEMA api CASCADE;
 DROP SCHEMA internal CASCADE;
-DROP ROLE anonymous;
