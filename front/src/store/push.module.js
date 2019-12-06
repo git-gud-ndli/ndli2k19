@@ -3,10 +3,9 @@ import localforage from "localforage";
 import Vue from "vue";
 import { base64DecToArr } from "../helpers";
 import gql from "graphql-tag";
-import store from "./index"
+import store from "./index";
 
-const apolloClient = createProvider(store),
-
+const apolloClient = createProvider(store);
 
 const configurePushSub = sub => {
   console.log("sub", sub);
