@@ -1,6 +1,6 @@
 import localforage from "localforage";
 // import ApolloClient from "apollo-boost";
-import Vue from "vue";
+import { createProvider } from "../vue-apollo";
 import { base64DecToArr } from "../helpers";
 import gql from "graphql-tag";
 import store from "./index";
