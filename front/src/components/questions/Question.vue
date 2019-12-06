@@ -27,12 +27,7 @@
       </v-list-item>
       <v-row class="pl-6">
         <v-col cols="auto">
-          <v-btn icon block class="mb-8">
-            <v-icon size="40">mdi-arrow-up-circle</v-icon>
-          </v-btn>
-          <v-btn icon block>
-            <v-icon size="40">mdi-arrow-down-circle</v-icon>
-          </v-btn>
+          <UpDown v-on:up="upvote" v-on:down="downvote" width="50px"></UpDown>
         </v-col>
         <v-col cols="auto">
           <v-card-text>
@@ -46,6 +41,7 @@
 
 <script>
 import gql from "graphql-tag";
+import UpDown from "../UpDown";
 export default {
   name: "Question",
   apollo: {
@@ -67,6 +63,9 @@ export default {
         };
       }
     }
+  },
+  components: {
+    UpDown
   },
   computed: {},
   methods: {
