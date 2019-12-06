@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: back
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - secretName: back-git-gud-fr
+    hosts:
+    - back.git-gud.fr
+  rules:
+  - host: back.git-gud.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: back
+          servicePort: 3000
