@@ -3,11 +3,10 @@ import localforage from "localforage";
 import Vue from "vue";
 import { base64DecToArr } from "../helpers";
 import gql from "graphql-tag";
+import store from "./index"
 
-// const apolloClient = new ApolloClient({
-//   // You should use an absolute URL here
-//   uri: process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:3000/graphql"
-// });
+const apolloClient = createProvider(store),
+
 
 const configurePushSub = sub => {
   console.log("sub", sub);
@@ -30,7 +29,7 @@ const configurePushSub = sub => {
     //     : null,
     //   contentEncoding
     // });
-    return Vue.prototype.$apollo.mutate({
+    return apolloClient.mutate({
       mutation: gql`
         mutation registerPush($e: String!) {
           addDevice(input: { endpoint: $e }) {
@@ -66,7 +65,7 @@ const configurePushSub = sub => {
       // ])[0];
       // console.log(key, token, contentEncoding);
       // eslint-disable-next-line
-      return Vue.prototype.$apollo.mutate({
+      return apolloClient.mutate({
         mutation: gql`
           mutation registerPush($e: String!) {
             addDevice(input: { endpoint: $e }) {
