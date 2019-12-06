@@ -36,6 +36,11 @@
 
         <v-card-actions>
           <v-btn small outlined rounded color="white accent-4">Plus</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <span class="subheading mr-2">{{ cardData.likes }}</span>
         </v-card-actions>
       </v-card>
     </v-hover>
@@ -73,7 +78,14 @@
         </v-list-item>
 
         <v-card-actions>
-          <v-btn small outlined rounded color="white accent-4">Plus</v-btn>
+          <v-btn small outlined rounded color="white accent-4"
+            >Télécharger</v-btn
+          >
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <span class="subheading mr-2">{{ cardData.likes }}</span>
         </v-card-actions>
       </v-card>
     </v-hover>
@@ -111,7 +123,12 @@
         </v-list-item>
 
         <v-card-actions>
-          <v-btn small outlined rounded color="white accent-4">Plus</v-btn>
+          <v-btn small outlined rounded color="white accent-4">Visiter</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <span class="subheading mr-2">{{ cardData.likes }}</span>
         </v-card-actions>
       </v-card>
     </v-hover>
