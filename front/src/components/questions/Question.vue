@@ -27,7 +27,17 @@
         </v-col>
       </v-row>
     </v-card>
-    <v-card class="mx-auto ml-10 mt-5" v-bind:key="answer" v-for="answer in answers.nodes" outlined>
+
+    <v-card>
+      <write-answer :question="question.questionId"></write-answer>
+    </v-card>
+
+    <v-card
+      class="mx-auto ml-10 mt-5"
+      v-bind:key="answer"
+      v-for="answer in answers.nodes"
+      outlined
+    >
       <v-list-item three-line>
         <v-list-item-avatar tile size="60" color="grey"></v-list-item-avatar>
         <v-list-item-content>
@@ -44,6 +54,7 @@
           </v-card-text>
         </v-col>
       </v-row>
+      {{ answers }}
     </v-card>
   </v-container>
 </template>
@@ -52,6 +63,7 @@
 import SubscribeButton from "./SubscribeButton";
 import UpDown from "../UpDown";
 import gql from "graphql-tag";
+import WriteAnswer from "./WriteAnswer";
 
 export default {
   name: "Question",
@@ -62,6 +74,7 @@ export default {
           question: questionByQuestionId(questionId: $qid) {
             title
             content
+            questionId
             author {
               name
             }
@@ -76,8 +89,8 @@ export default {
     },
     answers: {
       query: gql`
-        query MyQuery($qid: Int!) {
-          answers: allAnswers(condition: { postId: $qid }) {
+        query GetAnswers($qid: Int!) {
+          answers: allAnswers(condition: { questionId: $qid }) {
             nodes {
               userId
               content
@@ -97,10 +110,10 @@ export default {
     }
   },
   components: {
+    WriteAnswer,
     UpDown,
     SubscribeButton
   },
-  computed: {},
   methods: {
     upvote() {
       //
