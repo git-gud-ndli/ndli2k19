@@ -27,8 +27,10 @@ const configurePushSub = sub => {
     .then(reg => {
       console.log("barbar");
       // convert VAPID public key
-      let publicKey = base64DecToArr("BMisjcUEDlFMVYWBI/PzMhLnXGJ0EMLQu1Rt93FJS7MfpzqfTlw7OwrUQKyoJcUnLYiRiNH9pComoOL/3A1NJkw=");
-      console.log(publicKey)
+      let publicKey = base64DecToArr(
+        "BMisjcUEDlFMVYWBI/PzMhLnXGJ0EMLQu1Rt93FJS7MfpzqfTlw7OwrUQKyoJcUnLYiRiNH9pComoOL/3A1NJkw="
+      );
+      console.log(publicKey);
       let foo = reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: publicKey

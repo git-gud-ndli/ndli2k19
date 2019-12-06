@@ -2,12 +2,7 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn
-          color="primary"
-          dark
-          v-on="on"
-          @click.stop="dialog = true"
-        >
+        <v-btn color="primary" dark v-on="on" @click.stop="dialog = true">
           Posez votre question
         </v-btn>
       </template>
@@ -39,7 +34,9 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false"
+            >Close</v-btn
+          >
           <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
@@ -55,8 +52,7 @@ export default {
       dialog: false
     };
   }
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
