@@ -5,7 +5,7 @@
         height="300px"
         width="300px"
         v-if="cardData.type == 'question'"
-        color="red lighten-1"
+        :color="getColor()"
         :elevation="hover ? 12 : 2"
       >
         <v-list-item three-line>
@@ -139,6 +139,18 @@
 <script>
 export default {
   name: "Card",
+  methods: {
+    getColor() {
+      switch (cardData.type) {
+        case value:
+          
+          break;
+      
+        default:
+          break;
+      }
+    }
+  }
   props: {
     cardData: Object
   }

@@ -14,38 +14,16 @@
         </v-chip>
       </v-row>
     </div>
-    <v-carousel
-      hide-delimiters
-      show-arrows-on-hover
-      class="carousel-cont"
-      v-if="showCarousel"
-    >
-      <v-carousel-item
-        v-for="n in getCarouselNumber(cards)"
-        :key="n"
-        fill-height
-      >
-        <v-sheet color="indigo lighten-5" fill-height>
-          <v-container fluid fill-height>
-            <v-col cols="12">
-              <v-row class="justify-space-around">
-                <Card
-                  v-for="card in getRow(n - 1)[0]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col v-if="getConfig().itemsrow2" cols="12">
-              <v-row class="justify-space-around wrap">
-                <Card
-                  v-for="card in getRow(n - 1)[1]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
+    <v-carousel hide-delimiters show-arrows-on-hover class="carousel-cont" v-if="showCarousel" height="1000px">
+      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n" height="100%">
+        <v-sheet color="indigo lighten-5" height="100%">
+          <v-container fill-height>
+            <v-row style="justify-content: space-evenly;">
+              <Card v-for="card in getRow(n - 1)[0]" :key="card.name" :cardData="card" />
+            </v-row>
+            <v-row style="justify-content: space-evenly">
+              <Card v-for="card in getRow(n - 1)[1]" :key="card.name" :cardData="card" />
+            </v-row>
           </v-container>
         </v-sheet>
       </v-carousel-item>
@@ -270,9 +248,6 @@ $screen-lg-min: 1200px
     left: 50%
     transform: translate(-50%,-50%)
     z-index: 1
-
-.carousel-cont
-  height: 1000px !important
 
 .cont
   position: relative
