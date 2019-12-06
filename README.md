@@ -2,6 +2,23 @@
 
 Voici la version publié via kubernetes https://git-gud.fr
 
+# Notre applciation
+## Les avanatages de notre application
+
+L'applications s'installe très facilement grâce à l'utilisation du très fonctionnel et novateur **docker-compose up**. Cela nous permet d'avoir une architecture solide, durable et dans le **cloud**. La majorité de nos fonctionnalités fonctionnent. L'architecture est composée de services tels que:
+- une API GraphQL générée automatiquement grâce à des fonctions PostgresQL.
+- une application NodeJS écoutant la BDD et déclanchant des notifications personnalisées aux utilisateurs qui le osuhaitent.
+L'ensemble du projet est conçu pour fonctionner sur le cloud et même être déployé dans le nuage.
+Lien du site web: (https://git-gud.fr).
+
+## Clarté du code et architeture
+
+Notre architecture micro-services nous permet de maintenir des programmes courts et concis ce qui facilite leur compréhension et leur maintenabilité. De plus, l'utilisation habile de la documentation des différents outils nous permet de créer un code très lisible et faciliement modifiable.
+
+## Processus d'intégration continue
+
+La CI nous a permis de suivre en temps réel l'état du projet et de détecter les différents problèmes. De plus, la publication automatique des conteneurs des services nous a permis de déployer le système facilement dans le nuage.
+
 # Instructions
 
 Pour lancer le projet il suffit de faire:
