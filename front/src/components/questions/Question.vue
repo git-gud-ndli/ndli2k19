@@ -4,7 +4,7 @@
       <v-list-item three-line>
         <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
         <v-list-item-content>
-          <div class="overline mb-4">{{ question.author.name }}</div>
+          <div class="overline mb-4">{{ question.author ? question.author.name : "Anonymous" }}</div>
           <v-list-item-title class="headline mb-1">{{
             question.title
           }}</v-list-item-title>

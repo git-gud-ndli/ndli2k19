@@ -99,8 +99,15 @@ export default {
             content: this.content
           }
         })
-        .then(() => {
+        .then(({ data }) => {
           this.dialog = false;
+          console.log(data);
+          this.$router.push({
+            name: "question",
+            params: {
+              slug: data.addQuestion.question.questionId
+            }
+          });
         });
     }
   }
