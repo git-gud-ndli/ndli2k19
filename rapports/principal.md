@@ -21,8 +21,8 @@ header-includes:
 \begin{flushleft} \large
 \emph{Auteurs :}\\
 Timothée \textsc{Oliger}\\
-Timothée \textsc{Oliger}\\
-Timothée \textsc{Oliger}\\
+Nicolas \textsc{Streng}\\
+Cyril \textsc{Lajarge}\\
 Timothée \textsc{Oliger}\\
 Timothée \textsc{Oliger}\\
 Timothée \textsc{Oliger}\\
