@@ -1,7 +1,7 @@
 export const gbl = {
   state: {
     loading: false,
-    dark: false,
+    dark: true,
     stale: false
   },
   mutations: {
