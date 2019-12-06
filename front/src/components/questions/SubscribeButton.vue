@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subscribe-button">
     <v-btn text @click="toggleSubscribed()">{{
       subscribed ? "Se désabonner" : "S'abonner"
     }}</v-btn>

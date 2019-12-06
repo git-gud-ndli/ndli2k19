@@ -6,9 +6,12 @@
           <v-icon left>mdi-label</v-icon>
           {{ subject }}
         </v-chip>
-        <v-btn class="ma-2" height="32px" outlined color="purple"
-          >S'abonner</v-btn
-        >
+        <v-chip class="ma-2" label color="purple" text-color="white">
+          <subscribe-button
+            color="purple"
+            text-color="white"
+          ></subscribe-button>
+        </v-chip>
       </v-row>
     </div>
     <v-carousel
@@ -46,10 +49,12 @@
 </template>
 <script>
 import Card from "../components/Card";
+import SubscribeButton from "./questions/SubscribeButton";
 
 export default {
   name: "CardCarousel",
   components: {
+    SubscribeButton,
     Card
   },
   data() {
