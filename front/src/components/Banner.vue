@@ -52,7 +52,7 @@ export default {
   position: absolute;
   bottom: 0;
   left: 50%;
-  animation: up-down 1s infinite  alternate;
+  animation: up-down 1s infinite alternate;
 }
 .go-down i {
   color: white;
@@ -61,7 +61,11 @@ export default {
   color: yellow;
 }
 @keyframes up-down {
-    0% { transform: translate(-50%, 0); }
-    100% { transform: translate(-50%, -20px); }
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -20px);
+  }
 }
 </style>
