@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="blue accent-4">
-      <v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
+    <v-app-bar color="rgb(255,255,255,0)" absolute flat>
       <v-toolbar-title class="white--text" v-if="oidcUser">
         {{ oidcUser.name }}
       </v-toolbar-title>
