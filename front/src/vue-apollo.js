@@ -1,5 +1,8 @@
 import Vue from "vue";
 import VueApollo from "vue-apollo";
+import { HttpLink } from "apollo-link-http";
+import { ApolloLink } from "apollo-link";
+
 import {
   createApolloClient,
   restartWebsockets
@@ -51,11 +54,23 @@ const defaultOptions = {
 };
 
 // Call this in the Vue app file
-export function createProvider(options = {}) {
+export function createProvider(store, options = {}) {
+  const link = new HttpLink({ uri: httpEndpoint });
+  const auth = new ApolloLink((operation, forward) => {
+    const token = store.getters.oidcIdToken;
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : null
+      }
+    });
+    return forward(operation);
+  });
+
   // Create apollo client
   const { apolloClient, wsClient } = createApolloClient({
     ...defaultOptions,
-    ...options
+    ...options,
+    link: auth.concat(link)
   });
   apolloClient.wsClient = wsClient;
 
