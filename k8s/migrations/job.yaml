@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: docker.pkg.github.com/git-gud-ndli/ndli2k19/migrations:latest
+        args:
+        - -database=$(DATABASE_URL)
+        - up
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url
+      restartPolicy: Never
+  backoffLimit: 5

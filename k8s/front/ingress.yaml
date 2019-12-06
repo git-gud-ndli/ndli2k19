@@ -4,11 +4,13 @@ metadata:
   name: front
   annotations:
     kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
   tls:
   - secretName: git-gud-fr
     hosts:
     - git-gud.fr
+    - www.git-gud.fr
   rules:
   - host: git-gud.fr
     http:
