@@ -46,30 +46,37 @@ docker de github.
 
 L'architecture du projet est une fragmentation par micro services.
 
+![Architecture](./architecture.png)
+
+## Authentification
+
+L'authentification passe par un service d'authentification centralisé implémentant OpenID Connect (en l'occurence, Auth0).
+Cela permet de se brancher sur des éventuels systèmes d'authentification existant (type FranceConnect, CAS de l'université…)
+
 ## Back
 
-Tout les services sont conteneurisé et son déployés chez digital océan.
+Tout les services sont conteneurisé et son déployés chez DigitalOcean.
 
 ### Docker
 
 L'ensemble des services possèdent des manifestes docker pour leur conteneurisation.
 Cela permet d'avoir une architecture flexible compatible à une montée en charge automatique.
 
-### CI 
+### CI
 
 On utilise Github action pour construire les images docker, puis pour les publiés dans le registre
 docker de github.
 
-### k8s
+### Kubernetes
 
-Nous utilisons un cluster k8s, une db postgres pour héberger notre projet.
+Nous utilisons un cluster Kubernetes & une base de données Postgres pour héberger notre projet.
 
-### postgraphile
+### Postgraphile
 
-Graphile permet de générer une API GraphQL à partir d'une base de donnée PostgreSQL.
+[Postgraphile](https://www.graphile.org/postgraphile/introduction/) permet de générer une API GraphQL à partir d'une base de donnée PostgreSQL.
 Cela nous permet de de maintenir plus facilement la base grace à des migrations.
 
-### notifications
+### Notifications
 
 Les utilisateurs peuvent s'abonnés à des tags ou des question, il recoivent ensuite des
 notifications en fonctions de leurs abonnements.
@@ -90,4 +97,3 @@ Nous avons des notifications Push et de la mise de cache de données, permettant
 
 L'application est développée en Vue sous la forme de Single Page App, avec des modules complémentaires
 comme Vuex pour avoir un état global persistant, et Vuetify pour l'apparence.
-
