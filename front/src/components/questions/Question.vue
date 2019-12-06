@@ -13,10 +13,19 @@
       <v-card-text>
         {{ question.content }}
       </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn text>Répondre</v-btn>
-      </v-card-actions>
+
+      <v-row justify="end">
+        <v-col md="auto">
+          <v-card-actions>
+            <subscribe-button></subscribe-button>
+          </v-card-actions>
+        </v-col>
+        <v-col md="auto">
+          <v-card-actions>
+            <v-btn text>Répondre</v-btn>
+          </v-card-actions>
+        </v-col>
+      </v-row>
     </v-card>
     <v-card class="mx-auto ml-10 mt-5" outlined>
       <v-list-item three-line>
@@ -40,8 +49,10 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import SubscribeButton from "./SubscribeButton";
 import UpDown from "../UpDown";
+import gql from "graphql-tag";
+
 export default {
   name: "Question",
   apollo: {
@@ -65,7 +76,8 @@ export default {
     }
   },
   components: {
-    UpDown
+    UpDown,
+    SubscribeButton
   },
   computed: {},
   methods: {
@@ -74,7 +86,7 @@ export default {
     },
     downvote() {
       //
-    }
+    },
   }
 };
 </script>
