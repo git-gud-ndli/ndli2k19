@@ -8,30 +8,39 @@ webpush.setVapidDetails(
 );
 
 const client = new Client();
-console.log('Paul est lent !!!');
 
 client.connect();
-client.query('LISTEN global');
+client.query('LISTEN notif_new_question');
 
 client.on('notification', msg => {
-  client.query(
-    'SELECT endpoint FROM internal.devices AS dev INNER JOIN internal.question_sub AS q ON q.user_id = dev.user_id WHERE q.question_id = $1',
-    [msg.payload],
-    (err, res) => {
-      res.rows.forEach(e => {
-        console.log(e);
-        const payload = JSON.stringify({
-          title: 'Nicolas le pire DJ',
-          body: "C'est le pire",
-        });
+  switch (msg.channel) {
+    case 'notif_new_question':
+      client.query(
+        'SELECT endpoint, p256dh, auth FROM internal.devices AS dev INNER JOIN internal.question_sub AS q ON q.user_id = dev.user_id WHERE q.question_id = $1',
+        [msg.payload],
+        (err, res) => {
+          res.rows.forEach(({ endpoint, p256dh, auth }) => {
+            console.log(e);
+            const payload = JSON.stringify({
+              title: 'Nicolas le pire DJ',
+              body: "C'est le pire",
+            });
 
-        webpush
-          .sendNotification(subscription, payload)
-          .then(result => console.log(result))
-          .catch(e => console.log(e.stack));
-      });
-    },
-  );
+            webpush
+              .sendNotification({
+                endpoint,
+                keys: {
+                  p256dh,
+                  auth
+                }
+              }, payload)
+              .then(result => console.log(result))
+              .catch(e => console.log(e.stack));
+          });
+        },
+      );
+      break;
+  }
   console.log(msg.channel); // foo
   console.log(msg.payload); // bar!
 });
