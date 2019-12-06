@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: relative;">
     <v-carousel
       cycle
       height="100vh"
@@ -28,7 +28,7 @@
       </v-carousel-item>
     </v-carousel>
     <div class="go-down">
-      <v-icon size="60px">mdi-pan-down</v-icon>
+      <v-icon size="70px">mdi-pan-down</v-icon>
     </div>
   </div>
 </template>
@@ -52,12 +52,20 @@ export default {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  animation: up-down 1s infinite alternate;
 }
-.go-down li {
+.go-down i {
   color: white;
 }
 .slide-header > div {
   color: yellow;
+}
+@keyframes up-down {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -20px);
+  }
 }
 </style>

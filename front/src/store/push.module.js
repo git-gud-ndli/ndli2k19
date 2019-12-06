@@ -14,11 +14,11 @@ const configurePushSub = sub => {
   console.log("sub", sub);
   // eslint-disable-next-line
   if (sub) {
-    // const key = sub.getKey("p256dh");
-    // const token = sub.getKey("auth");
-    // const contentEncoding = (PushManager.supportedContentEncodings || [
-    //   "aesgcm"
-    // ])[0];
+    const key = sub.getKey("p256dh");
+    const token = sub.getKey("auth");
+    const contentEncoding = (PushManager.supportedContentEncodings || [
+      "aesgcm"
+    ])[0];
     // console.log("pojj");
     // eslint-disable-next-line
     // return api.post("/push/subscribe", {
@@ -40,7 +40,9 @@ const configurePushSub = sub => {
         }
       `,
       variables: {
-        e: sub.endpoint
+        e: sub.endpoint,
+        key,
+        token
       }
     });
   }
@@ -56,11 +58,11 @@ const configurePushSub = sub => {
     })
     .then(newSub => {
       console.log(newSub);
-      // const key = newSub.getKey("p256dh");
-      // const token = newSub.getKey("auth");
-      // const contentEncoding = (PushManager.supportedContentEncodings || [
-      //   "aesgcm"
-      // ])[0];
+      const key = newSub.getKey("p256dh");
+      const token = newSub.getKey("auth");
+      const contentEncoding = (PushManager.supportedContentEncodings || [
+        "aesgcm"
+      ])[0];
       // console.log(key, token, contentEncoding);
       // eslint-disable-next-line
       return apolloClient.mutate({
@@ -72,7 +74,9 @@ const configurePushSub = sub => {
           }
         `,
         variables: {
-          e: newSub.endpoint
+          e: newSub.endpoint,
+          key,
+          token
         }
       });
     });
