@@ -9,11 +9,21 @@ spec:
   - secretName: back-git-gud-fr
     hosts:
     - back.git-gud.fr
+  - secretName: git-gud-fr
+    hosts:
+    - git-gud.fr
   rules:
   - host: back.git-gud.fr
     http:
       paths:
       - path: /
+        backend:
+          serviceName: back
+          servicePort: 3000
+  - host: git-gud.fr
+    http:
+      paths:
+      - path: /graphql
         backend:
           serviceName: back
           servicePort: 3000

@@ -2,6 +2,8 @@
 
 Voici la version publié via kubernetes https://git-gud.fr
 
+Le playground GraphQL de notre instance déployée se trouve ici : https://back.git-gud.fr/graphiql.
+
 # Notre applciation
 ## Les avanatages de notre application
 
