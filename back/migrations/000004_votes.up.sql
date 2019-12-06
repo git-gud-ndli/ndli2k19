@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION api.add_upvote(post_id integer)
       -- get the number of upvotes
       SELECT COUNT (*) INTO value
         FROM internal.votes
-        WHERE votes.post_id = $1;
+        WHERE votes.post_id = $1 AND is_up = 'true';
 
       -- returns number of upvotes
       RETURN value;
@@ -64,7 +64,7 @@ CREATE OR REPLACE FUNCTION api.add_downvote(post_id integer)
       -- get the number of downvotes
       SELECT COUNT (*) INTO value
         FROM internal.votes
-        WHERE votes.post_id = $1;
+        WHERE votes.post_id = $1 AND is_up = 'false';
 
       -- returns number of downvotes
       RETURN value;
