@@ -2,6 +2,8 @@
   <div>
     <Banner :slides="slides"></Banner>
     <CardCarousel />
+    <v-divider dark></v-divider>
+    <CardCarousel />
   </div>
 </template>
 

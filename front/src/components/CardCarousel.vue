@@ -3,7 +3,7 @@
     <div class="text-center chip">
       <v-row justify="center" align="center">
         <v-chip class="ma-2" label color="purple" text-color="white">
-          <v-icon left>mdi-label</v-icon>
+          <v-icon left>mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
         <v-chip class="ma-2" label color="purple" text-color="white">
@@ -20,8 +20,12 @@
       class="carousel-cont"
       v-if="showCarousel"
     >
-      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n">
-        <v-sheet color="indigo lighten-5" height="100%">
+      <v-carousel-item
+        v-for="n in getCarouselNumber(cards)"
+        :key="n"
+        fill-height
+      >
+        <v-sheet color="indigo lighten-5" fill-height>
           <v-container fluid fill-height>
             <v-col cols="12">
               <v-row class="justify-space-around">
@@ -32,6 +36,7 @@
                 />
               </v-row>
             </v-col>
+            <v-spacer></v-spacer>
             <v-col v-if="getConfig().itemsrow2" cols="12">
               <v-row class="justify-space-around wrap">
                 <Card
@@ -82,7 +87,8 @@ export default {
         {
           type: "link",
           title: "Card1",
-          data: "jbfzbfjozbeogepzjgvbjez",
+          data:
+            "Je suis le sous-titre de la carte 1. Appuie sur visiter pour avoir plus d'infos!",
           tags: ["tag1", "tag2"],
           likes: 12
         },
@@ -126,7 +132,7 @@ export default {
           type: "question",
           title: "Card8",
           data:
-            "jbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjez",
+            "jbfzbfjozbeofhzbhpzkbharfjnùfzùjnfajnùfazfzùkjbkbjfzjkbhzkbhjzfkhbbkhjefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
@@ -243,7 +249,7 @@ $screen-lg-min: 1200px
        @content
 
 .chip
-  width: 100%
+  width: 300px
   @include sm
     position: absolute
     top: 10%
@@ -266,14 +272,7 @@ $screen-lg-min: 1200px
     z-index: 1
 
 .carousel-cont
-  @include sm
-    height: 350px
-
-  @include md
-    height: 600px
-
-  @include lg
-    height: 600px
+  height: 1000px !important
 
 .cont
   position: relative
