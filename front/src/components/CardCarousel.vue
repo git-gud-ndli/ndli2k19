@@ -1,41 +1,46 @@
 <template>
   <div class="cont">
     <div class="text-center chip">
-      <v-container>
+      <v-row justify="center" align="center">
         <v-chip class="ma-2" label color="purple" text-color="white">
           <v-icon left>mdi-label</v-icon>
           {{ subject }}
         </v-chip>
-        <v-btn class="ma-2" outlined color="purple">S'abonner</v-btn>
-      </v-container>
+        <v-btn class="ma-2" height="32px" outlined color="purple">S'abonner</v-btn>
+      </v-row>
     </div>
     <v-carousel
       hide-delimiters
       show-arrows-on-hover
-      height="600px"
+      class="carousel-cont"
       v-if="showCarousel"
     >
-      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n">
-        <v-container fluid fill-height>
-          <v-col cols="12">
-            <v-row class="justify-space-around">
-              <Card
-                v-for="card in getRow(n - 1)[0]"
-                :key="card.name"
-                :cardData="card"
-              />
-            </v-row>
-          </v-col>
-          <v-col v-if="getConfig().itemsrow2" cols="12">
-            <v-row class="justify-space-around wrap">
-              <Card
-                v-for="card in getRow(n - 1)[1]"
-                :key="card.name"
-                :cardData="card"
-              />
-            </v-row>
-          </v-col>
-        </v-container>
+      <v-carousel-item
+        v-for="n in getCarouselNumber(cards)"
+        :key="n"
+      >
+        <v-sheet color="grey lighten-1" height="100%">
+          <v-container fluid fill-height>
+            <v-col cols="12">
+              <v-row class="justify-space-around">
+                <Card
+                  v-for="card in getRow(n - 1)[0]"
+                  :key="card.name"
+                  :cardData="card"
+                />
+              </v-row>
+            </v-col>
+            <v-col v-if="getConfig().itemsrow2" cols="12">
+              <v-row class="justify-space-around wrap">
+                <Card
+                  v-for="card in getRow(n - 1)[1]"
+                  :key="card.name"
+                  :cardData="card"
+                />
+              </v-row>
+            </v-col>
+          </v-container>
+        </v-sheet>
       </v-carousel-item>
     </v-carousel>
   </div>
@@ -74,7 +79,8 @@ export default {
           type: "link",
           title: "Card1",
           data: "jbfzbfjozbeogepzjgvbjez",
-          tags: ["tag1", "tag2"]
+          tags: ["tag1", "tag2"],
+          likes: 12
         },
         {
           type: "question",
@@ -233,11 +239,13 @@ $screen-lg-min: 1200px
        @content
 
 .chip
+  width: 100%
   @include sm
     position: absolute
-    z-index: 1
+    top: 10%
     left: 50%
-    transform: translateX(-50%)
+    transform: translate(-50%, 10%)
+    z-index: 1
 
   @include md
     position: absolute
@@ -252,6 +260,16 @@ $screen-lg-min: 1200px
     left: 50%
     transform: translate(-50%,-50%)
     z-index: 1
+
+.carousel-cont
+  @include sm
+    height: 350px
+
+  @include md
+    height: 600px
+
+  @include lg
+    height: 600px
 
 .cont
   position: relative
