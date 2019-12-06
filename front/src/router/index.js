@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import { vuexOidcCreateRouterMiddleware } from "vuex-oidc";
 import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Question from "../views/QuestionPage.vue";
 import OidcCallback from "../components/OidcCallback";
 import BubbleSectionTest from "../views/BubbleSectionTest";
 import store from "../store";
@@ -19,6 +20,11 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard
+  },
+  {
+    path: "/question/:slug/:whatever",
+    name: "question",
+    component: Question
   },
   {
     path: "/about",

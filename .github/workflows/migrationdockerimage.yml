@@ -1,0 +1,22 @@
+name: Publish Migrations Docker image
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+
+    - name: Copy Repo Files
+      uses: actions/checkout@master
+
+    - name: Publish Docker Image to GPR
+      uses: machine-learning-apps/gpr-docker-publish@master
+      id: docker
+      with:
+        IMAGE_NAME: 'migrations'
+        TAG: 'latest'
+        DOCKERFILE_PATH: 'back/migrations/Dockerfile'
+        BUILD_CONTEXT: 'back/migrations/'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

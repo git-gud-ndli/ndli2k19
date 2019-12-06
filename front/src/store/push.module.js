@@ -2,12 +2,15 @@ import localforage from "localforage";
 import { base64DecToArr } from "../helpers";
 
 const configurePushSub = sub => {
+  console.log("sub", sub);
+  // eslint-disable-next-line
   if (sub) {
     const key = sub.getKey("p256dh");
     const token = sub.getKey("auth");
     const contentEncoding = (PushManager.supportedContentEncodings || [
       "aesgcm"
     ])[0];
+    console.log("pojj");
     // eslint-disable-next-line
     return api.post("/push/subscribe", {
       endpoint: sub.endpoint,
@@ -22,19 +25,25 @@ const configurePushSub = sub => {
   }
   return navigator.serviceWorker.ready
     .then(reg => {
+      console.log("barbar");
       // convert VAPID public key
-      let publicKey = base64DecToArr(process.env.VUE_APP_VAPID_KEY);
-      return reg.pushManager.subscribe({
+      let publicKey = base64DecToArr("BMisjcUEDlFMVYWBI/PzMhLnXGJ0EMLQu1Rt93FJS7MfpzqfTlw7OwrUQKyoJcUnLYiRiNH9pComoOL/3A1NJkw=");
+      console.log(publicKey)
+      let foo = reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: publicKey
       });
+      console.log(foo);
+      return foo;
     })
     .then(newSub => {
+      console.log(newSub);
       const key = newSub.getKey("p256dh");
       const token = newSub.getKey("auth");
       const contentEncoding = (PushManager.supportedContentEncodings || [
         "aesgcm"
       ])[0];
+      console.log(key, token, contentEncoding);
       // eslint-disable-next-line
       return api.post("/push/subscribe", {
         endpoint: newSub.endpoint,
@@ -74,7 +83,6 @@ export const push = {
     checkPushPermission: ({ dispatch }) => {
       localforage.getItem("push_enabled").then(val => {
         if (val === true) {
-          console.log("hooo");
           dispatch("setPushStatus", true);
         }
       });
@@ -86,7 +94,7 @@ export const push = {
         localforage.setItem("push_enabled", false);
       }
       // eslint-disable-next-line
-      if (api.token) {
+      if (true) {
         if (value) {
           Notification.requestPermission().then(async value => {
             // permission granted
@@ -96,29 +104,24 @@ export const push = {
               });
               if (sub) {
                 commit("setPush", true);
-                console.log("Already subscribed to Push");
               }
+              console.log("issou", sub);
               configurePushSub(sub)
-                .then(data => {
-                  console.log(data);
+                .then(() => {
+                  console.log("bla");
                   commit("setPush", true);
                   localforage.setItem("push_enabled", true);
                 })
-                .catch(err => {
-                  console.error(err);
-                });
+                .catch(() => {});
             }
           });
         } else {
           unsubscribeToPush()
-            .then(data => {
-              console.log(data);
+            .then(() => {
               commit("setPush", false);
               localforage.setItem("push_enabled", false);
             })
-            .catch(err => {
-              console.error(err);
-            });
+            .catch(() => {});
         }
       }
     }

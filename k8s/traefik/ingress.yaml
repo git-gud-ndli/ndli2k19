@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: admin
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - secretName: traefik-git-gud-fr
+    hosts:
+    - traefik.git-gud.fr
+  rules:
+  - host: traefik.git-gud.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: admin
+          servicePort: 80

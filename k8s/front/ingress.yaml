@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: front
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - secretName: git-gud-fr
+    hosts:
+    - git-gud.fr
+  rules:
+  - host: git-gud.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: front
+          servicePort: 80

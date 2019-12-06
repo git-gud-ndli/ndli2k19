@@ -1,17 +1,39 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <vContainer>
+    <h1>Jean-Pauvre simulator</h1>
+    <v-btn color="success" @click="foo">blabla</v-btn>
+    <SearchBar />
+  </vContainer>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import gql from "graphql-tag";
+import SearchBar from "../components/SearchBar";
 export default {
   name: "home",
   components: {
-    HelloWorld
+    SearchBar
+  },
+  apollo: {
+    hey: gql`
+      query {
+        allQuestions {
+          nodes {
+            title
+            author {
+              userId
+              avatar
+              name
+            }
+          }
+        }
+      }
+    `
+  },
+  methods: {
+    foo() {
+      this.$store.dispatch("setStale", true);
+    }
   }
 };
 </script>
