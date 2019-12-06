@@ -2,7 +2,7 @@
   <div>
     <Banner :slides="slides"></Banner>
     <question-form></question-form>
-    <TagSearchContainer />
+    <TagSearchContainer :tagsAppliques="tagsAppliques" />
     <CardCarousel />
     <v-divider dark></v-divider>
     <CardCarousel />
@@ -20,6 +20,7 @@ import TagSearchContainer from "../components/TagSearchContainer";
 export default {
   data() {
     return {
+      tagsAppliques: [],
       slides: [
         {
           src:

@@ -21,11 +21,16 @@ spec:
           value: "BOH8nTQA5iZhl23+NCzGG9prvOZ5BE0MJXBW+GUkQIvRVTVB32JxmX0V1j6z0r7rnT7+bgi6f2g5fMPpAh5brqM="
         - name: PRIVATE_VAPID_KEY
           value: "TRlY/7yQzvqcLpgHQTxiU5fVzAAvAw/cdSh5kLFLNqg="
+        - name: PGPORT
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: port
         - name: PGHOST
           valueFrom:
             secretKeyRef:
               name: db-secret
-              key: host
+              key: host_no_port
         - name: PGDATABASE
           valueFrom:
             secretKeyRef:
@@ -41,3 +46,5 @@ spec:
             secretKeyRef:
               name: db-secret
               key: pass
+        - name: PGSSLMODE
+          value: require

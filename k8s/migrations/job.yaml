@@ -8,14 +8,30 @@ spec:
       containers:
       - name: migrations
         image: docker.pkg.github.com/git-gud-ndli/ndli2k19/migrations:latest
+        imagePullPolicy: Always
         args:
-        - -database=$(DATABASE_URL)
+        - -database=postgresql://$(PGUSER):$(PGPASSWORD)@$(PGHOST)/$(PGDATABASE)
         - up
         env:
-        - name: DATABASE_URL
+        - name: PGHOST
           valueFrom:
             secretKeyRef:
               name: db-secret
-              key: url
+              key: host
+        - name: PGDATABASE
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: db
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: user
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: pass
       restartPolicy: Never
   backoffLimit: 5

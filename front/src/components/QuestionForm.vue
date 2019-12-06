@@ -31,7 +31,10 @@
 
               <v-col cols="12" sm="6">
                 <v-autocomplete
-                  :items="['Logement', 'Erasmus', 'Revenus', 'CROUS']"
+                  v-if="tags"
+                  :items="tags.nodes"
+                  item-text="name"
+                  item-value="tagId"
                   label="Etiquettes"
                   multiple
                 ></v-autocomplete>
@@ -62,6 +65,19 @@ export default {
       title: "",
       content: ""
     };
+  },
+  apollo: {
+    tags: gql`
+      query {
+        tags: allTags {
+          nodes {
+            name
+            tagId
+            slug
+          }
+        }
+      }
+    `
   },
   methods: {
     submitQuestion() {
