@@ -51,14 +51,23 @@ Timothée \textsc{Oliger}\\
 
 # Introduction
 
-Nous sommes 6 étudiants (et un boulet) passioné d'informatique.
-La nuit de l'info est l'occasion de se retrouvé et de reussir les défis.
+Nous sommes 6 étudiants (et un boulet) passionés d'informatique.
+La nuit de l'info est l'occasion de se retrouver et de réussir les défis.
 
 # Architecture
 
 ## Green coding
 
 ## Front
+
+Le site "Aide'tudiant" est composé d'une page principale ainsi que d'une multitude de pages annexes correspondant à des ressources.
+Ces ressources sont:
+- des réponses à une thématique/question
+- un lien vers un site
+- un document
+Cette page princpale est composée de "bulles" représentant les thèmes/tags les plus tendances sur une période de donnée. Ces dernières redirige vers une autre partie de la page où se trouve une caroussel avec des liens vers les différentes ressources disponibles.
+Ces ressources s'ouvre dans une nouvelle page.
+Il y a également une barre de recherche pour des thèmes/tags qui ne seraient pas en tendance ainsi qu'un élément permettant de poser une question précise.
 
 ### VueJS
 
