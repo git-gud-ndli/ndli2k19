@@ -58,4 +58,17 @@ notifications en fonctions de leurs abonnements.
 
 ## Front
 
+### GraphQL
+
+Nous utilisons une API GraphQL et non REST, ce qui permet de récupérer uniquement les informations nécessaires
+depuis le serveur, ce qui, à large échelle, permet d'économiser bande passante et énergie.
+
+### PWA
+
+Nous avons des notifications Push et de la mise de cache de données, permettant un usage minimal de l'application avec absence de connexion / mauvaise connexion.
+
+### Vue
+
+L'application est développée en Vue sous la forme de Single Page App, avec des modules complémentaires
+comme Vuex pour avoir un état global persistant, et Vuetify pour l'apparence.
 
