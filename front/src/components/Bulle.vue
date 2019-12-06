@@ -2,7 +2,7 @@
   <v-card
     style="height:100%;width:100%;border-radius:100%"
     class="d-inline-block mx-auto bulle"
-    @click="setActive(!active)"
+    @click="toggleActive()"
     v-bind:class="{ active: active }"
   >
     <v-container fill-height text-center grid-list-md text-xs-center>
@@ -24,8 +24,9 @@ export default {
     };
   },
   methods: {
-    setActive(active) {
-      this.$emit("toggle-active", active);
+    toggleActive() {
+      this.active = !this.active;
+      this.$emit("toggle-active", this.active);
     },
     getSize() {
       return this.size ? this.size : 100;
