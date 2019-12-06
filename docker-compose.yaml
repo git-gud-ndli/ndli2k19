@@ -32,6 +32,9 @@ services:
       PGDATABASE: git-gud
       PGUSER: git-gud
       PGPASSWORD: git-gud
+      WEB_PUSH_CONTACT: "mailto:paul.heng@etu.unistra.fr"
+      PUBLIC_VAPID_KEY: "BOH8nTQA5iZhl23+NCzGG9prvOZ5BE0MJXBW+GUkQIvRVTVB32JxmX0V1j6z0r7rnT7+bgi6f2g5fMPpAh5brqM="
+      PRIVATE_VAPID_KEY: "TRlY/7yQzvqcLpgHQTxiU5fVzAAvAw/cdSh5kLFLNqg="
     depends_on:
     - migrations
 
