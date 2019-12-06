@@ -44,7 +44,7 @@
 import Card from "../components/Card";
 
 export default {
-  name: "Carousel",
+  name: "CardCarousel",
   components: {
     Card
   },
@@ -115,7 +115,8 @@ export default {
         {
           type: "question",
           title: "Card8",
-          data: "jbfzbfjozbeogepzjgvbjez",
+          data:
+            "jbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
@@ -145,7 +146,8 @@ export default {
         {
           type: "question",
           title: "Card13",
-          data: "jbfzbfjozbeogepzjgvbjez"
+          data: "jbfzbfjozbeogepzjgvbjez",
+          tags: ["tag1", "tag2"]
         },
         {
           type: "question",
