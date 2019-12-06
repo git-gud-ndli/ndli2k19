@@ -24,7 +24,7 @@ Timothée \textsc{Oliger}\\
 Nicolas \textsc{Streng}\\
 Cyril \textsc{Lajarge}\\
 Paul \textsc{Heng}\\
-Timothée \textsc{Oliger}\\
+Ludovic \textsc{Muller}\\
 Timothée \textsc{Oliger}\\
 Timothée \textsc{Oliger}\\
 \end{flushleft}

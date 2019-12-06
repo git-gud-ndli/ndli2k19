@@ -23,7 +23,7 @@ header-includes:
 Timothée \textsc{Oliger}\\
 Nicolas \textsc{Streng}\\
 Cyril \textsc{Lajarge}\\
-Timothée \textsc{Oliger}\\
+Ludovic \textsc{Muller}\\
 Timothée \textsc{Oliger}\\
 Timothée \textsc{Oliger}\\
 Timothée \textsc{Oliger}\\
