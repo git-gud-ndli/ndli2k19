@@ -33,6 +33,13 @@ INSERT INTO internal.question_sub (user_id, question_id) VALUES
   (4, 1),
   (2, 1);
 
+-- seed tag_sub
+INSERT INTO internal.tag_sub (user_id, tag_id) VALUES
+  (1, 1),
+  (1, 3),
+  (1, 5),
+  (2, 1);
+
 -- seq
 ALTER SEQUENCE internal.users_user_id_seq RESTART 5;
 ALTER SEQUENCE internal.tags_tag_id_seq RESTART 8;
