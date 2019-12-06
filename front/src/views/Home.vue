@@ -2,6 +2,7 @@
   <div>
     <Banner :slides="slides"></Banner>
     <question-form></question-form>
+    <TagSearchContainer />
     <CardCarousel />
     <v-divider dark></v-divider>
     <CardCarousel />
@@ -14,6 +15,7 @@ import Banner from "../components/Banner";
 import CardCarousel from "../components/CardCarousel";
 import Footer from "../components/Footer";
 import QuestionForm from "../components/QuestionForm";
+import TagSearchContainer from "../components/TagSearchContainer";
 
 export default {
   data() {
@@ -42,7 +44,8 @@ export default {
     QuestionForm,
     Banner,
     CardCarousel,
-    Footer
+    Footer,
+    TagSearchContainer
   },
   methods: {
     foo() {
