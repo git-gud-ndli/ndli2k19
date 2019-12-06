@@ -1,16 +1,13 @@
 <template>
   <div class="cont">
-    <div class="text-center chip">
-      <v-row justify="center" align="center">
+    <div class="chip">
+      <v-row align="center" class="flex-nowrap">
         <v-chip class="ma-2" label color="purple" text-color="white">
           <v-icon left>mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
         <v-chip class="ma-2" label color="purple" text-color="white">
-          <subscribe-button
-            color="purple"
-            text-color="white"
-          ></subscribe-button>
+          <subscribe-button></subscribe-button>
         </v-chip>
       </v-row>
     </div>
@@ -227,7 +224,7 @@ $screen-lg-min: 1200px
        @content
 
 .chip
-  width: 300px
+  width: fit-content
   @include sm
     position: absolute
     top: 10%
