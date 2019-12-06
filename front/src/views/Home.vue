@@ -1,34 +1,40 @@
 <template>
-  <vContainer>
-    <h1>Jean-Pauvre simulator</h1>
-    <v-btn color="success" @click="foo">blabla</v-btn>
-    <SearchBar />
-  </vContainer>
+  <div>
+    <Banner :slides="slides"></Banner>
+    <CardCarousel />
+  </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
-import SearchBar from "../components/SearchBar";
+import Banner from "../components/Banner";
+import CardCarousel from "../components/CardCarousel";
+
 export default {
+  data() {
+    return {
+      slides: [
+        {
+          src:
+            "https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          txt: "Une plateforme #collaborative#"
+        },
+        {
+          src:
+            "https://images.pexels.com/photos/261909/pexels-photo-261909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          txt: "Des #tags# du moment"
+        },
+        {
+          src:
+            "https://images.pexels.com/photos/261895/pexels-photo-261895.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          txt: "#hey# wassup"
+        }
+      ]
+    };
+  },
   name: "home",
   components: {
-    SearchBar
-  },
-  apollo: {
-    hey: gql`
-      query {
-        allQuestions {
-          nodes {
-            title
-            author {
-              userId
-              avatar
-              name
-            }
-          }
-        }
-      }
-    `
+    Banner,
+    CardCarousel
   },
   methods: {
     foo() {

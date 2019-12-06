@@ -96,6 +96,8 @@ CREATE OR REPLACE VIEW api.questions AS
     posts.content
   FROM internal.questions
   JOIN internal.posts USING (post_id);
+COMMENT ON VIEW api.questions IS
+  E'@primaryKey question_id';
 
 CREATE OR REPLACE VIEW api.users AS
   SELECT

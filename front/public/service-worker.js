@@ -1,5 +1,5 @@
 /* eslint-disable */
-const API_ENDPOINT = "https://pwapi.rahveiz.fr";
+const API_ENDPOINT = "https://git-gud.fr";
 importScripts("scripts/localforage.min.js");
 
 /* Listen to SW update */

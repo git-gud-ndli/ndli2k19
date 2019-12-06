@@ -19,13 +19,16 @@ CREATE OR REPLACE FUNCTION api.add_question(title text, content text)
       INSERT INTO internal.posts (user_id, content) VALUES (c_user_id, $2)
       RETURNING post_id INTO c_post_id;
 
+      -- create question
       INSERT INTO internal.questions (post_id, title) VALUES (c_post_id, $1)
       RETURNING question_id INTO c_question_id;
 
+      -- get the created question
       SELECT * INTO value
         FROM api.questions
         WHERE questions.question_id = c_question_id;
 
+      -- returns the created question
       RETURN value;
     END;
   $$ LANGUAGE plpgsql;

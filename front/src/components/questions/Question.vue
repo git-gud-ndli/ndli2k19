@@ -1,37 +1,83 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <v-avatar color="grey" class="mr-4"></v-avatar>
-      <v-col xl="8">
-        <v-card shrink mr-6>
+  <v-container v-if="question">
+    <v-card class="mx-auto mb-10" outlined>
+      <v-list-item three-line>
+        <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
+        <v-list-item-content>
+          <div class="overline mb-4">{{ question.author.name }}</div>
+          <v-list-item-title class="headline mb-1">{{
+            question.title
+          }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-card-text>
+        {{ question.content }}
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text>Répondre</v-btn>
+      </v-card-actions>
+    </v-card>
+    <v-card class="mx-auto ml-10 mt-5" outlined>
+      <v-list-item three-line>
+        <v-list-item-avatar tile size="60" color="grey"></v-list-item-avatar>
+        <v-list-item-content>
+          <div class="overline mb-4">Jean-Réponse</div>
+        </v-list-item-content>
+      </v-list-item>
+      <v-row class="pl-6">
+        <v-col cols="auto">
+          <v-btn icon block class="mb-8">
+            <v-icon size="40">mdi-arrow-up-circle</v-icon>
+          </v-btn>
+          <v-btn icon block>
+            <v-icon size="40">mdi-arrow-down-circle</v-icon>
+          </v-btn>
+        </v-col>
+        <v-col cols="auto">
           <v-card-text>
-            <v-row class="mb-4" align="center">
-              <strong class="title">Titre</strong>
-            </v-row>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            Miskine
           </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 
 <script>
+import gql from "graphql-tag";
 export default {
-  name: "Question"
-}
+  name: "Question",
+  apollo: {
+    question: {
+      query: gql`
+        query GetQuestion($qid: Int!) {
+          question: questionByQuestionId(questionId: $qid) {
+            title
+            content
+            author {
+              name
+            }
+          }
+        }
+      `,
+      variables() {
+        return {
+          qid: parseInt(this.$route.params.slug, 10)
+        };
+      }
+    }
+  },
+  computed: {},
+  methods: {
+    upvote() {
+      //
+    },
+    downvote() {
+      //
+    }
+  }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

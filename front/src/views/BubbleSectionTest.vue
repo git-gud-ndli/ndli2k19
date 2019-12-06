@@ -1,15 +1,15 @@
 <template>
   <div>
-    <BubbleSection />
+    <CardCarousel />
   </div>
 </template>
 <script>
-import BubbleSection from "../components/Carousel";
+import CardCarousel from "../components/CardCarousel";
 
 export default {
   name: "BubbleSectionTest",
   components: {
-    BubbleSection
+    CardCarousel
   }
 };
 </script>
