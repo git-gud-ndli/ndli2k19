@@ -13,10 +13,19 @@
       <v-card-text>
         {{ question.content }}
       </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn text>Répondre</v-btn>
-      </v-card-actions>
+
+      <v-row justify="end">
+        <v-col md="auto">
+          <v-card-actions>
+            <subscribe-button></subscribe-button>
+          </v-card-actions>
+        </v-col>
+        <v-col md="auto">
+          <v-card-actions>
+            <v-btn text>Répondre</v-btn>
+          </v-card-actions>
+        </v-col>
+      </v-row>
     </v-card>
     <v-card class="mx-auto ml-10 mt-5" outlined>
       <v-list-item three-line>
@@ -27,12 +36,7 @@
       </v-list-item>
       <v-row class="pl-6">
         <v-col cols="auto">
-          <v-btn icon block class="mb-8">
-            <v-icon size="40">mdi-arrow-up-circle</v-icon>
-          </v-btn>
-          <v-btn icon block>
-            <v-icon size="40">mdi-arrow-down-circle</v-icon>
-          </v-btn>
+          <UpDown v-on:up="upvote" v-on:down="downvote" width="50px"></UpDown>
         </v-col>
         <v-col cols="auto">
           <v-card-text>
@@ -45,7 +49,10 @@
 </template>
 
 <script>
+import SubscribeButton from "./SubscribeButton";
+import UpDown from "../UpDown";
 import gql from "graphql-tag";
+
 export default {
   name: "Question",
   apollo: {
@@ -68,6 +75,10 @@ export default {
       }
     }
   },
+  components: {
+    UpDown,
+    SubscribeButton
+  },
   computed: {},
   methods: {
     upvote() {
@@ -75,7 +86,7 @@ export default {
     },
     downvote() {
       //
-    }
+    },
   }
 };
 </script>
