@@ -50,3 +50,38 @@ Timothée \textsc{Oliger}\\
 \newpage
 
 # Introduction
+
+Nous sommes 6 étudiants (et un boulet) passioné d'informatique.
+La nuit de l'info est l'occasion de se retrouvé et de reussir les défis.
+
+# Architecture
+
+## Green coding
+
+## Front
+
+### VueJS
+
+### GraphQL
+
+### Vuex
+
+### PWA
+
+## Back
+
+### Postgraphile
+
+### Notifs
+
+# Deploiement
+
+## Docker
+
+## Docker compose 
+
+## k8s
+
+# Deroulement
+
+# Conclusion
