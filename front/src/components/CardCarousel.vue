@@ -2,8 +2,8 @@
   <div class="cont">
     <div class="chip">
       <v-row align="center" class="flex-nowrap">
-        <v-chip class="ma-2" label color="purple" text-color="white">
-          <v-icon left>mdi-pound</v-icon>
+        <v-chip class="display-2 font-weight-bold text-uppercase ma-2" label large color="transparent" text-color="purple">
+          <v-icon left size="40px">mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
         <v-chip class="ma-2" label color="purple" text-color="white">
@@ -53,7 +53,7 @@ export default {
           itemsrow2: 2
         },
         {
-          size: 1280,
+          size: 1903,
           itemsrow1: 4,
           itemsrow2: 3
         }
