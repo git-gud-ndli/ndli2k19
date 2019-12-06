@@ -2,9 +2,9 @@
   <v-app>
     <Navbar />
     <StaleAlert v-if="isStale" />
-    <v-alert :type="alert.type" :value="alert.active">
+    <!-- <v-alert :type="alert.type" :value="alert.active">
       {{ alert.msg }}
-    </v-alert>
+    </v-alert> -->
     <v-content>
       <router-view></router-view>
     </v-content>

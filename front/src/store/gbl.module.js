@@ -4,7 +4,7 @@ export const gbl = {
     dark: false,
     stale: false,
     alert: {
-      type: "",
+      type: "success",
       msg: "",
       active: false
     }

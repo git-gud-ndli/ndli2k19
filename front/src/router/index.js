@@ -6,6 +6,7 @@ import Dashboard from "../views/Dashboard.vue";
 import Question from "../views/QuestionPage.vue";
 import OidcCallback from "../components/OidcCallback";
 import BubbleSectionTest from "../views/BubbleSectionTest";
+import TagSearchContainer from "../components/TagSearchContainer";
 import store from "../store";
 
 Vue.use(VueRouter);
@@ -44,6 +45,11 @@ const routes = [
     path: "/bubblesectiontest",
     name: "bubblesectiontest",
     component: BubbleSectionTest
+  },
+  {
+    path: "/nadwal",
+    name: "nadwal",
+    component: TagSearchContainer
   }
 ];
 
