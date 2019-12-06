@@ -66,7 +66,6 @@ const configurePushSub = sub => {
       ])[0];
       console.log(key, token, contentEncoding);
       // eslint-disable-next-line
-<<<<<<< HEAD
       return Vue.prototype.$apollo.mutate({
         mutation: gql`
           mutation registerPush($e: String!) {
@@ -80,17 +79,6 @@ const configurePushSub = sub => {
           key: key,
           token: token
         }
-=======
-      return api.post("/push/subscribe", {
-        endpoint: newSub.endpoint,
-        publicKey: key
-          ? btoa(String.fromCharCode.apply(null, new Uint8Array(key)))
-          : null,
-        authToken: token
-          ? btoa(String.fromCharCode.apply(null, new Uint8Array(token)))
-          : null,
-        contentEncoding
->>>>>>> b2ed7ced86d21876bdd5cb37f8a6c69622cdf654
       });
     });
 };
