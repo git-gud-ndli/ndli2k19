@@ -5,6 +5,7 @@ import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Question from "../views/QuestionPage.vue";
 import OidcCallback from "../components/OidcCallback";
+import BubbleSectionTest from "../views/BubbleSectionTest";
 import store from "../store";
 
 Vue.use(VueRouter);
@@ -38,6 +39,11 @@ const routes = [
     path: "/oidc-callback", // Needs to match redirectUri (redirect_uri if you use snake case) in you oidcSettings
     name: "oidcCallback",
     component: OidcCallback
+  },
+  {
+    path: "/bubblesectiontest",
+    name: "bubblesectiontest",
+    component: BubbleSectionTest
   }
 ];
 
