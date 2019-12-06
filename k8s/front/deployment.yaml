@@ -22,3 +22,6 @@ spec:
           limits:
             cpu: 200m
             memory: 200Mi
+        env:
+        - name: VUE_APP_GRAPHQL_HTTP
+          value: https://back.git-gud.fr/graphql

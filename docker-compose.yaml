@@ -39,7 +39,9 @@ services:
     depends_on:
     - migrations
 
-      # front:
-      #   build: front/
-      #   ports:
-      #   - 8080:80
+  front:
+    build: front/
+    ports:
+    - 8080:80
+    environment:
+    - BACKEND_URL=https://back.git-gud.fr/graphql
