@@ -2,7 +2,13 @@
   <div class="cont">
     <div class="chip">
       <v-row align="center" class="flex-nowrap">
-        <v-chip class="display-2 font-weight-bold text-uppercase ma-2" label large color="transparent" text-color="purple">
+        <v-chip
+          class="display-2 font-weight-bold text-uppercase ma-2"
+          label
+          large
+          color="transparent"
+          text-color="purple"
+        >
           <v-icon left size="40px">mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
@@ -11,15 +17,33 @@
         </v-chip>
       </v-row>
     </div>
-    <v-carousel hide-delimiters show-arrows-on-hover class="carousel-cont" v-if="showCarousel" height="1000px">
-      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n" height="100%">
+    <v-carousel
+      hide-delimiters
+      show-arrows-on-hover
+      class="carousel-cont"
+      v-if="showCarousel"
+      height="1000px"
+    >
+      <v-carousel-item
+        v-for="n in getCarouselNumber(cards)"
+        :key="n"
+        height="100%"
+      >
         <v-sheet color="indigo lighten-5" height="100%">
           <v-container fill-height>
             <v-row style="justify-content: space-evenly;">
-              <Card v-for="card in getRow(n - 1)[0]" :key="card.name" :cardData="card" />
+              <Card
+                v-for="card in getRow(n - 1)[0]"
+                :key="card.name"
+                :cardData="card"
+              />
             </v-row>
             <v-row style="justify-content: space-evenly">
-              <Card v-for="card in getRow(n - 1)[1]" :key="card.name" :cardData="card" />
+              <Card
+                v-for="card in getRow(n - 1)[1]"
+                :key="card.name"
+                :cardData="card"
+              />
             </v-row>
           </v-container>
         </v-sheet>

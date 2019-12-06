@@ -1,7 +1,12 @@
 <template>
   <div>
     <v-hover v-slot:default="{ hover }">
-      <v-card height="300px" width="300px" :color="getColor()" :elevation="hover ? 12 : 2">
+      <v-card
+        height="300px"
+        width="300px"
+        :color="getColor()"
+        :elevation="hover ? 12 : 2"
+      >
         <v-list-item three-line>
           <v-list-item-content>
             <div class="overline mb-4">
@@ -12,14 +17,15 @@
                 color="purple"
                 text-color="white"
                 small
-              >{{ chip }}</v-chip>
+                >{{ chip }}</v-chip
+              >
             </div>
             <v-list-item-title class="headline mb-1">
-              {{
-              cardData.title
-              }}
+              {{ cardData.title }}
             </v-list-item-title>
-            <v-list-item-subtitle class="contenu">{{ cardData.data }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="contenu">{{
+              cardData.data
+            }}</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar tile size="30">
@@ -28,7 +34,14 @@
         </v-list-item>
 
         <v-card-actions class="actions">
-          <v-btn small outlined rounded color="white accent-4" style="margin-left: 5px">Plus</v-btn>
+          <v-btn
+            small
+            outlined
+            rounded
+            color="white accent-4"
+            style="margin-left: 5px"
+            >Plus</v-btn
+          >
           <v-spacer></v-spacer>
           <v-btn icon>
             <v-icon>mdi-heart</v-icon>
