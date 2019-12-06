@@ -49,27 +49,32 @@ import gql from "graphql-tag";
 export default {
   name: "Question",
   apollo: {
-    allQuestions: gql`
-      query {
-        allQuestions {
-          nodes {
-            questionId
+    question: {
+      query: gql`
+        query GetQuestion($qid: Int!) {
+          question: questionByQuestionId(questionId: $qid) {
             title
+            content
             author {
-              userId
-              avatar
               name
             }
-            postId
-            content
           }
         }
+      `,
+      variables() {
+        return {
+          qid: parseInt(this.$route.params.slug, 10)
+        };
       }
-    `
+    }
   },
-  computed: {
-    question() {
-      return this.allQuestions ? this.allQuestions.nodes[0] : null;
+  computed: {},
+  methods: {
+    upvote() {
+      //
+    },
+    downvote() {
+      //
     }
   }
 };
