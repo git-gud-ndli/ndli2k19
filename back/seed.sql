@@ -28,6 +28,11 @@ INSERT INTO internal.questions (question_id, post_id, title) VALUES
 INSERT INTO internal.answers (answer_id, post_id, question_id) VALUES
   (1, 2, 1);
 
+-- seed question_sub
+INSERT INTO internal.question_sub (user_id, question_id) VALUES
+  (4, 1),
+  (2, 1);
+
 -- seq
 ALTER SEQUENCE internal.users_user_id_seq RESTART 5;
 ALTER SEQUENCE internal.tags_tag_id_seq RESTART 8;
