@@ -9,7 +9,7 @@
       />
     </v-row>
     <v-row style="margin-top:100px">
-      <SearchBar @up-search="updateTags" />
+      <SearchBar @up-search="updateTags" style="width:100%;" />
     </v-row>
   </v-container>
 </template>
@@ -22,10 +22,12 @@ export default {
     SearchBar,
     Bulle
   },
+  props: {
+    tagsAppliques: Array
+  },
   data() {
     return {
-      tagsTendances: ["lkjjjl", "ljjkljlk", "kjvczbkczbcz"],
-      tagsAppliques: []
+      tagsTendances: ["lkjjjl", "ljjkljlk", "kjvczbkczbcz"]
     };
   },
   methods: {

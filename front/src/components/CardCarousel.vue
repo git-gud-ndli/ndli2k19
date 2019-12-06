@@ -207,7 +207,6 @@ export default {
       let config = this.getConfig(this.windowWidth);
       let sum = config.itemsrow1 + config.itemsrow2;
       let carouselnumber = Math.ceil(cardsSize / sum);
-      console.log(carouselnumber);
       return carouselnumber;
     },
     getConfig: function() {

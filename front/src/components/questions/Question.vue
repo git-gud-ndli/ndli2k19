@@ -94,6 +94,17 @@ export default {
         };
       }
     },
+    tags: gql`
+      query {
+        tags: allTags {
+          nodes {
+            name
+            tagId
+            slug
+          }
+        }
+      }
+    `,
     answers: {
       query: gql`
         query GetAnswers($qid: Int!) {
