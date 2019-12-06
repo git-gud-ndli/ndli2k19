@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "sleep-start": "sleep 5 && npm run start"
+    "sleep-start": "sleep 7 && npm run start"
   },
   "dependencies": {
     "postgraphile": "^4.5.0"
