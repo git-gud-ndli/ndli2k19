@@ -64,7 +64,7 @@ const configurePushSub = sub => {
       // const contentEncoding = (PushManager.supportedContentEncodings || [
       //   "aesgcm"
       // ])[0];
-      console.log(key, token, contentEncoding);
+      // console.log(key, token, contentEncoding);
       // eslint-disable-next-line
       return Vue.prototype.$apollo.mutate({
         mutation: gql`
