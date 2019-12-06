@@ -16,9 +16,9 @@ const configurePushSub = sub => {
   if (sub) {
     const key = sub.getKey("p256dh");
     const token = sub.getKey("auth");
-    const contentEncoding = (PushManager.supportedContentEncodings || [
-      "aesgcm"
-    ])[0];
+    // const contentEncoding = (PushManager.supportedContentEncodings || [
+    //   "aesgcm"
+    // ])[0];
     // console.log("pojj");
     // eslint-disable-next-line
     // return api.post("/push/subscribe", {
@@ -60,9 +60,9 @@ const configurePushSub = sub => {
       console.log(newSub);
       const key = newSub.getKey("p256dh");
       const token = newSub.getKey("auth");
-      const contentEncoding = (PushManager.supportedContentEncodings || [
-        "aesgcm"
-      ])[0];
+      // const contentEncoding = (PushManager.supportedContentEncodings || [
+      //   "aesgcm"
+      // ])[0];
       // console.log(key, token, contentEncoding);
       // eslint-disable-next-line
       return apolloClient.mutate({
