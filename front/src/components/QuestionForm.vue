@@ -85,24 +85,6 @@ export default {
         })
         .then(() => {
           this.dialog = false;
-          this.title = "";
-          this.content = "";
-          this.$store.dispatch("setNotification", {
-            type: "success",
-            msg: "Envoyé !"
-          });
-          setTimeout(() => {
-            this.$store.dispatch("dismissAlert");
-          }, 5000);
-        })
-        .catch(() => {
-          this.dialog = false;
-          this.title = "";
-          this.content = "";
-          this.$store.dispatch("setNotification", {
-            type: "danger",
-            msg: "Oopsie !"
-          });
         });
     }
   }

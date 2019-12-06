@@ -2,12 +2,7 @@ export const gbl = {
   state: {
     loading: false,
     dark: false,
-    stale: false,
-    alert: {
-      type: "success",
-      msg: "",
-      active: false
-    }
+    stale: false
   },
   mutations: {
     setLoading: (state, val) => {
@@ -18,14 +13,6 @@ export const gbl = {
     },
     setStale: (state, val) => {
       state.stale = val;
-    },
-    setNotification: (state, { type, msg }) => {
-      state.alert.type = type;
-      state.alert.msg = msg;
-      state.alert.active = true;
-    },
-    dismissAlert: state => {
-      state.alert.active = false;
     }
   },
   actions: {
@@ -37,19 +24,11 @@ export const gbl = {
     },
     setStale: ({ commit }, val) => {
       commit("setStale", val);
-    },
-    setNotification: ({ commit }, payload) => {
-      commit("setNotification", payload);
-    },
-    dismissAlert: ({ commit }) => {
-      commit("dismissAlert");
     }
   },
   getters: {
     isLoading: state => state.loading,
     isStale: state => state.stale,
-    isDark: state => state.dark,
-    alertActive: state => state.alert.active,
-    alert: state => state.alert
+    isDark: state => state.dark
   }
 };

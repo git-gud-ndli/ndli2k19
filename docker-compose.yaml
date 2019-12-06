@@ -21,7 +21,8 @@ services:
   postgraphile:
     build: back/
     environment:
-      DATABASE_URL: postgres://git-gud:git-gud@db/git-gud?sslmode=disable
+      DATABASE_URL: "postgres://git-gud:git-gud@db/git-gud?sslmode=disable"
+      OIDC_ISSUER: "https://ndli-2k19.eu.auth0.com/"
     ports:
     - 3000:3000
 
@@ -38,9 +39,7 @@ services:
     depends_on:
     - migrations
 
-  front:
-    build: front/
-    ports:
-    - 8080:80
-    environment:
-    - BACKEND_URL=http://localhost:3000
+      # front:
+      #   build: front/
+      #   ports:
+      #   - 8080:80

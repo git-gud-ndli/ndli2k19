@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-app-bar color="rgb(255,255,255,0)" absolute flat>
+      <img class="mr-3" :src="require('@/assets/Logo_AideTudiant.png')" height="40"/>
       <v-toolbar-title class="white--text" v-if="oidcUser">
         {{ oidcUser.name }}
       </v-toolbar-title>

@@ -27,6 +27,11 @@
         </v-col>
       </v-row>
     </v-card>
+
+    <v-card>
+      <write-answer :question="question.questionId"></write-answer>
+    </v-card>
+
     <v-card
       class="mx-auto ml-10 mt-5"
       v-bind:key="answer"
@@ -49,25 +54,7 @@
           </v-card-text>
         </v-col>
       </v-row>
-    </v-card>
-    <!-- Answer -->
-    <v-card class="mx-auto ml-10 mt-5" outlined>
-      <v-card-title primary-title>
-        Répondre à la question
-      </v-card-title>
-      <v-card-text>
-        <v-textarea
-          label="Votre réponse"
-          name="answer"
-          textarea
-          v-model="ansTxt"
-        >
-        </v-textarea>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="success" @click="answer">Envoyer</v-btn>
-      </v-card-actions>
+      {{ answers }}
     </v-card>
   </v-container>
 </template>
@@ -76,6 +63,7 @@
 import SubscribeButton from "./SubscribeButton";
 import UpDown from "../UpDown";
 import gql from "graphql-tag";
+import WriteAnswer from "./WriteAnswer";
 
 export default {
   name: "Question",
@@ -86,6 +74,7 @@ export default {
           question: questionByQuestionId(questionId: $qid) {
             title
             content
+            questionId
             author {
               name
             }
@@ -100,8 +89,8 @@ export default {
     },
     answers: {
       query: gql`
-        query MyQuery($qid: Int!) {
-          answers: allAnswers(condition: { postId: $qid }) {
+        query GetAnswers($qid: Int!) {
+          answers: allAnswers(condition: { questionId: $qid }) {
             nodes {
               userId
               content
@@ -121,14 +110,9 @@ export default {
     }
   },
   components: {
+    WriteAnswer,
     UpDown,
     SubscribeButton
-  },
-  computed: {},
-  data() {
-    return {
-      ansTxt: ""
-    };
   },
   methods: {
     upvote() {
@@ -136,26 +120,6 @@ export default {
     },
     downvote() {
       //
-    },
-    answer() {
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation ans($qid: Int!, $c: String!) {
-            addAnswer(input: { questionId: $qid, content: $c }) {
-              answer {
-                content
-                author {
-                  name
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          questionId: parseInt(this.$route.params.id),
-          content: this.ansTxt
-        }
-      });
     }
   }
 };

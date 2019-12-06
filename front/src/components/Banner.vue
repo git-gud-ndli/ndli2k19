@@ -37,7 +37,7 @@
 export default {
   props: {
     height: Number,
-    slides: Object
+    slides: Array
   },
   data() {
     return {};

@@ -10,16 +10,15 @@ import gql from "graphql-tag";
 // });
 
 const configurePushSub = sub => {
-  console.log(Vue.prototype);
   console.log("sub", sub);
   // eslint-disable-next-line
   if (sub) {
     const key = sub.getKey("p256dh");
     const token = sub.getKey("auth");
-    // const contentEncoding = (PushManager.supportedContentEncodings || [
-    //   "aesgcm"
-    // ])[0];
-    // console.log("pojj");
+    const contentEncoding = (PushManager.supportedContentEncodings || [
+      "aesgcm"
+    ])[0];
+    console.log("pojj");
     // eslint-disable-next-line
     // return api.post("/push/subscribe", {
     //   endpoint: sub.endpoint,
@@ -51,20 +50,23 @@ const configurePushSub = sub => {
       console.log("barbar");
       // convert VAPID public key
       let publicKey = base64DecToArr(process.env.VUE_APP_VAPID_KEY);
-      return reg.pushManager.subscribe({
+      let foo = reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: publicKey
       });
+      console.log(foo);
+      return foo;
     })
     .then(newSub => {
       console.log(newSub);
       const key = newSub.getKey("p256dh");
       const token = newSub.getKey("auth");
-      // const contentEncoding = (PushManager.supportedContentEncodings || [
-      //   "aesgcm"
-      // ])[0];
-      // console.log(key, token, contentEncoding);
+      const contentEncoding = (PushManager.supportedContentEncodings || [
+        "aesgcm"
+      ])[0];
+      console.log(key, token, contentEncoding);
       // eslint-disable-next-line
+<<<<<<< HEAD
       return Vue.prototype.$apollo.mutate({
         mutation: gql`
           mutation registerPush($e: String!) {
@@ -78,6 +80,17 @@ const configurePushSub = sub => {
           key: key,
           token: token
         }
+=======
+      return api.post("/push/subscribe", {
+        endpoint: newSub.endpoint,
+        publicKey: key
+          ? btoa(String.fromCharCode.apply(null, new Uint8Array(key)))
+          : null,
+        authToken: token
+          ? btoa(String.fromCharCode.apply(null, new Uint8Array(token)))
+          : null,
+        contentEncoding
+>>>>>>> b2ed7ced86d21876bdd5cb37f8a6c69622cdf654
       });
     });
 };

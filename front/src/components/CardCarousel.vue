@@ -84,6 +84,7 @@ export default {
       ],
       cards: [
         {
+          slug: "blabla",
           type: "link",
           title: "Card1",
           data:
@@ -92,12 +93,14 @@ export default {
           likes: 12
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card2",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "doc",
           title: "Card3",
           data: "jbfzbfjozbeogepzjgvbjez",
@@ -110,24 +113,28 @@ export default {
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card5",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card6",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card7",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card8",
           data:
@@ -135,48 +142,56 @@ export default {
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card9",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card10",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card11",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card12",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card13",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card14",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card15",
           data: "jbfzbfjozbeogepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
+          slug: "blabla",
           type: "question",
           title: "Card16",
           data: "jbfzbfjozbeogepzjgvbjez",

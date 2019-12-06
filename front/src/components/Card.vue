@@ -34,18 +34,20 @@
         </v-list-item>
 
         <v-card-actions class="actions">
-          <v-btn
-            small
-            outlined
-            rounded
-            color="white accent-4"
-            style="margin-left: 5px"
-            >Plus</v-btn
-          >
+          <router-link :to="{ name: 'question', params: {slug: cardData.slug } }">
+            <v-btn
+              small
+              outlined
+              rounded
+              color="white accent-4"
+              style="margin-left: 5px"
+              >Plus</v-btn
+            >
+          </router-link>
           <v-spacer></v-spacer>
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
           <span class="subheading mr-2">{{ cardData.likes }}</span>
         </v-card-actions>
       </v-card>

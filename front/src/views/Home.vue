@@ -1,7 +1,7 @@
 <template>
   <div>
     <Banner :slides="slides"></Banner>
-    <TagSearchContainer />
+    <question-form></question-form>
     <CardCarousel />
     <v-divider dark></v-divider>
     <CardCarousel />
@@ -12,8 +12,8 @@
 <script>
 import Banner from "../components/Banner";
 import CardCarousel from "../components/CardCarousel";
-import TagSearchContainer from "../components/TagSearchContainer";
 import Footer from "../components/Footer";
+import QuestionForm from "../components/QuestionForm";
 
 export default {
   data() {
@@ -39,9 +39,9 @@ export default {
   },
   name: "home",
   components: {
+    QuestionForm,
     Banner,
     CardCarousel,
-    TagSearchContainer,
     Footer
   },
   methods: {

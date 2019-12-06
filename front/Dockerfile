@@ -9,6 +9,4 @@ RUN yarn build
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
-COPY run.sh .
-RUN chmod +x run.sh
-CMD [ "./run.sh" ]
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,5 +1,5 @@
 /* eslint-disable */
-const API_ENDPOINT = "http://localhost:8080";
+const API_ENDPOINT = "https://git-gud.fr";
 importScripts("scripts/localforage.min.js");
 
 /* Listen to SW update */

@@ -9,10 +9,12 @@ spec:
       - name: front
         image: docker.pkg.github.com/git-gud-ndli/ndli2k19/front:latest
         imagePullPolicy: Always
+
         ports:
         - containerPort: 80
           name: http
           protocol: TCP
+
         resources:
           requests:
             cpu: 100m
