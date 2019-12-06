@@ -1,13 +1,13 @@
 import localforage from "localforage";
-import ApolloClient from "apollo-boost";
+// import ApolloClient from "apollo-boost";
 import Vue from "vue";
 import { base64DecToArr } from "../helpers";
 import gql from "graphql-tag";
 
-const apolloClient = new ApolloClient({
-  // You should use an absolute URL here
-  uri: process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:3000/graphql"
-});
+// const apolloClient = new ApolloClient({
+//   // You should use an absolute URL here
+//   uri: process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:3000/graphql"
+// });
 
 const configurePushSub = sub => {
   console.log(Vue.prototype);
@@ -31,7 +31,7 @@ const configurePushSub = sub => {
     //     : null,
     //   contentEncoding
     // });
-    return apolloClient.mutate({
+    return Vue.prototype.$apollo.mutate({
       mutation: gql`
         mutation registerPush($e: String!) {
           addDevice(input: { endpoint: $e }) {
@@ -41,8 +41,8 @@ const configurePushSub = sub => {
       `,
       variables: {
         e: sub.endpoint,
-        key,
-        token
+        key: key,
+        token: token
       }
     });
   }
@@ -65,7 +65,7 @@ const configurePushSub = sub => {
       // ])[0];
       // console.log(key, token, contentEncoding);
       // eslint-disable-next-line
-      return apolloClient.mutate({
+      return Vue.prototype.$apollo.mutate({
         mutation: gql`
           mutation registerPush($e: String!) {
             addDevice(input: { endpoint: $e }) {
@@ -75,8 +75,8 @@ const configurePushSub = sub => {
         `,
         variables: {
           e: newSub.endpoint,
-          key,
-          token
+          key: key,
+          token: token
         }
       });
     });
