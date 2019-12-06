@@ -1,6 +1,7 @@
 <template>
   <div>
     <Banner :slides="slides"></Banner>
+    <TagSearchContainer />
     <CardCarousel />
     <v-divider dark></v-divider>
     <CardCarousel />
@@ -11,6 +12,7 @@
 <script>
 import Banner from "../components/Banner";
 import CardCarousel from "../components/CardCarousel";
+import TagSearchContainer from "../components/TagSearchContainer";
 import Footer from "../components/Footer";
 
 export default {
@@ -39,6 +41,7 @@ export default {
   components: {
     Banner,
     CardCarousel,
+    TagSearchContainer,
     Footer
   },
   methods: {

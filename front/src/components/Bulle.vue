@@ -8,7 +8,7 @@
     <v-container fill-height text-center grid-list-md text-xs-center>
       <v-layout row wrap align-center>
         <v-flex>
-          <h3>{{ title }}</h3>
+          <div class="headline">#{{ title }}</div>
         </v-flex>
       </v-layout>
     </v-container>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ["title", "size"],
+  props: ["title"],
   data() {
     return {
       active: false
@@ -35,4 +35,7 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-card--link:before {
+  background:transparent;
+}</style>
