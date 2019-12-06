@@ -41,12 +41,20 @@
       <v-list-item three-line>
         <v-list-item-avatar tile size="60" color="grey"></v-list-item-avatar>
         <v-list-item-content>
-          <div class="overline mb-4">{{ answer.author.name }}</div>
+          <div class="overline mb-4">
+            {{ answer.author ? answer.author.name : "Anonymous" }}
+          </div>
         </v-list-item-content>
       </v-list-item>
       <v-row class="pl-6">
         <v-col cols="auto">
-          <UpDown v-on:up="upvote" v-on:down="downvote" width="50px"></UpDown>
+          <UpDown
+            v-on:up="upvote(answer.postId)"
+            v-on:down="downvote(answer.postId)"
+            v-bind:up="answer.votes ? answer.votes.upvotes : 0"
+            v-bind:down="answer.votes ? answer.votes.downvotes : 0"
+            width="50px"
+          ></UpDown>
         </v-col>
         <v-col cols="auto">
           <v-card-text>
@@ -54,7 +62,6 @@
           </v-card-text>
         </v-col>
       </v-row>
-      {{ answers }}
     </v-card>
   </v-container>
 </template>
@@ -94,6 +101,12 @@ export default {
             nodes {
               userId
               content
+              postId
+              votes {
+                downvotes
+                upvotes
+                postId
+              }
               author {
                 name
               }
@@ -115,11 +128,35 @@ export default {
     SubscribeButton
   },
   methods: {
-    upvote() {
-      //
+    downvote(postId) {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation($postId: Int!) {
+            addDownvote(input: { postId: $postId }) {
+              clientMutationId
+            }
+          }
+        `,
+        // Parameters
+        variables: {
+          postId: postId
+        }
+      });
     },
-    downvote() {
-      //
+    upvote(postId) {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation($postId: Int!) {
+            addUpvote(input: { postId: $postId }) {
+              clientMutationId
+            }
+          }
+        `,
+        // Parameters
+        variables: {
+          postId: postId
+        }
+      });
     }
   }
 };
