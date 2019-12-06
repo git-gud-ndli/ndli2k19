@@ -6,7 +6,9 @@
           <v-icon left>mdi-label</v-icon>
           {{ subject }}
         </v-chip>
-        <v-btn class="ma-2" height="32px" outlined color="purple">S'abonner</v-btn>
+        <v-btn class="ma-2" height="32px" outlined color="purple"
+          >S'abonner</v-btn
+        >
       </v-row>
     </div>
     <v-carousel
@@ -15,11 +17,8 @@
       class="carousel-cont"
       v-if="showCarousel"
     >
-      <v-carousel-item
-        v-for="n in getCarouselNumber(cards)"
-        :key="n"
-      >
-        <v-sheet color="grey lighten-1" height="100%">
+      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n">
+        <v-sheet color="indigo lighten-5" height="100%">
           <v-container fluid fill-height>
             <v-col cols="12">
               <v-row class="justify-space-around">
