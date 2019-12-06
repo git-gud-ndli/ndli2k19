@@ -3,41 +3,27 @@
     <div class="text-center chip">
       <v-row justify="center" align="center">
         <v-chip class="ma-2" label color="purple" text-color="white">
-          <v-icon left>mdi-label</v-icon>
+          <v-icon left>mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
-        <v-btn class="ma-2" height="32px" outlined color="purple"
-          >S'abonner</v-btn
-        >
+        <v-chip class="ma-2" label color="purple" text-color="white">
+          <subscribe-button
+            color="purple"
+            text-color="white"
+          ></subscribe-button>
+        </v-chip>
       </v-row>
     </div>
-    <v-carousel
-      hide-delimiters
-      show-arrows-on-hover
-      class="carousel-cont"
-      v-if="showCarousel"
-    >
-      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n">
+    <v-carousel hide-delimiters show-arrows-on-hover class="carousel-cont" v-if="showCarousel" height="1000px">
+      <v-carousel-item v-for="n in getCarouselNumber(cards)" :key="n" height="100%">
         <v-sheet color="indigo lighten-5" height="100%">
-          <v-container fluid fill-height>
-            <v-col cols="12">
-              <v-row class="justify-space-around">
-                <Card
-                  v-for="card in getRow(n - 1)[0]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
-            <v-col v-if="getConfig().itemsrow2" cols="12">
-              <v-row class="justify-space-around wrap">
-                <Card
-                  v-for="card in getRow(n - 1)[1]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
+          <v-container fill-height>
+            <v-row style="justify-content: space-evenly;">
+              <Card v-for="card in getRow(n - 1)[0]" :key="card.name" :cardData="card" />
+            </v-row>
+            <v-row style="justify-content: space-evenly">
+              <Card v-for="card in getRow(n - 1)[1]" :key="card.name" :cardData="card" />
+            </v-row>
           </v-container>
         </v-sheet>
       </v-carousel-item>
@@ -46,10 +32,12 @@
 </template>
 <script>
 import Card from "../components/Card";
+import SubscribeButton from "./questions/SubscribeButton";
 
 export default {
   name: "CardCarousel",
   components: {
+    SubscribeButton,
     Card
   },
   data() {
@@ -77,7 +65,8 @@ export default {
         {
           type: "link",
           title: "Card1",
-          data: "jbfzbfjozbeogepzjgvbjez",
+          data:
+            "Je suis le sous-titre de la carte 1. Appuie sur visiter pour avoir plus d'infos!",
           tags: ["tag1", "tag2"],
           likes: 12
         },
@@ -121,7 +110,7 @@ export default {
           type: "question",
           title: "Card8",
           data:
-            "jbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjez",
+            "jbfzbfjozbeofhzbhpzkbharfjnùfzùjnfajnùfazfzùkjbkbjfzjkbhzkbhjzfkhbbkhjefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjezjbfzbfjozbeofhzbhpzkbharefzbhkeavbhkmavefvmgepzjgvbjez",
           tags: ["tag1", "tag2"]
         },
         {
@@ -238,7 +227,7 @@ $screen-lg-min: 1200px
        @content
 
 .chip
-  width: 100%
+  width: 300px
   @include sm
     position: absolute
     top: 10%
@@ -259,16 +248,6 @@ $screen-lg-min: 1200px
     left: 50%
     transform: translate(-50%,-50%)
     z-index: 1
-
-.carousel-cont
-  @include sm
-    height: 350px
-
-  @include md
-    height: 600px
-
-  @include lg
-    height: 600px
 
 .cont
   position: relative

@@ -1,5 +1,5 @@
-DROP IF EXISTS internal.votes;
-DROP IF EXISTS VIEW api.votes;
-DROP IF EXISTS FUNCTION api.answer_votes;
-DROP IF EXISTS FUNCTION api.add_upvote;
-DROP IF EXISTS FUNCTION api.add_downvote;
+DROP FUNCTION IF EXISTS api.answer_votes;
+DROP FUNCTION IF EXISTS api.add_upvote;
+DROP FUNCTION IF EXISTS api.add_downvote;
+DROP VIEW IF EXISTS api.votes;
+DROP TABLE IF EXISTS internal.votes;

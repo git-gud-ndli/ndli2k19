@@ -2,10 +2,10 @@
   <div>
     <v-hover v-slot:default="{ hover }">
       <v-card
-        max-width="300px"
-        max-height="200px"
+        height="300px"
+        width="300px"
         v-if="cardData.type == 'question'"
-        color="red"
+        :color="getColor()"
         :elevation="hover ? 12 : 2"
       >
         <v-list-item three-line>
@@ -24,9 +24,9 @@
             <v-list-item-title class="headline mb-1">{{
               cardData.title
             }}</v-list-item-title>
-            <v-list-item-subtitle>{{
-              cardData.data | summary(100)
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle>
+              {{ cardData.data }}
+            </v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar tile size="30">
@@ -46,9 +46,10 @@
     </v-hover>
     <v-hover v-slot:default="{ hover }">
       <v-card
+        height="300px"
         width="300px"
         v-if="cardData.type == 'doc'"
-        color="blue"
+        color="blue lighten-1"
         :elevation="hover ? 12 : 2"
       >
         <v-list-item three-line>
@@ -67,9 +68,9 @@
             <v-list-item-title class="headline mb-1">{{
               cardData.title
             }}</v-list-item-title>
-            <v-list-item-subtitle>{{
-              cardData.data | summary(100)
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle>
+              {{ cardData.data }}
+            </v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar tile size="30">
@@ -91,9 +92,10 @@
     </v-hover>
     <v-hover v-slot:default="{ hover }">
       <v-card
+        height="300px"
         width="300px"
         v-if="cardData.type == 'link'"
-        color="green"
+        color="green lighten-1"
         :elevation="hover ? 12 : 2"
       >
         <v-list-item three-line>
@@ -112,9 +114,9 @@
             <v-list-item-title class="headline mb-1">{{
               cardData.title
             }}</v-list-item-title>
-            <v-list-item-subtitle>{{
-              cardData.data | summary(100)
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle>
+              {{ cardData.data }}
+            </v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar tile size="30">
@@ -137,6 +139,18 @@
 <script>
 export default {
   name: "Card",
+  methods: {
+    getColor() {
+      switch (cardData.type) {
+        case value:
+          
+          break;
+      
+        default:
+          break;
+      }
+    }
+  }
   props: {
     cardData: Object
   }
