@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 
 const apolloClient = new ApolloClient({
   // You should use an absolute URL here
-  uri: "http://localhost:3000/graphql"
+  uri: process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:3000/graphql"
 });
 
 const configurePushSub = sub => {
