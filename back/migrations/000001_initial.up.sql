@@ -115,18 +115,18 @@ CREATE TABLE IF NOT EXISTS api.devices (
   endpoint varchar(1024)
 );
 
-CREATE OR REPLACE FUNCTION internal.new_notify()
+CREATE OR REPLACE FUNCTION internal.new_question_notify()
 RETURNS trigger AS $$
 BEGIN
-   PERFORM pg_notify(CAST('notif_new_post' AS TEXT), NEW.post_id::TEXT);
+   PERFORM pg_notify(CAST('notif_new_question' AS TEXT), NEW.question_id::TEXT);
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER new_post
-  BEFORE INSERT ON internal.posts
+CREATE TRIGGER new_question
+  BEFORE INSERT ON internal.questions
   FOR EACH ROW
-  EXECUTE PROCEDURE internal.new_notify();
+  EXECUTE PROCEDURE internal.new_question_notify();
 
 CREATE OR REPLACE FUNCTION api.questions_author(question api.questions)
 RETURNS api.users AS $$
