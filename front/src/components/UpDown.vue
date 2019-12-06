@@ -40,9 +40,11 @@ export default {
       this.$emit("down");
     },
     getColor() {
-      return (this.up - this.down > 0) 
-      ? "#4CAF50" 
-      : (this.up - this.down == 0) ? "" : "#F44336";
+      return this.up - this.down > 0
+        ? "#4CAF50"
+        : this.up - this.down == 0
+        ? ""
+        : "#F44336";
     }
   },
   name: "UpDown"
@@ -51,9 +53,9 @@ export default {
 
 <style scoped>
 .up:hover {
-    color: #4CAF50;
+  color: #4caf50;
 }
 .down:hover {
-    color: #F44336;
+  color: #f44336;
 }
 </style>

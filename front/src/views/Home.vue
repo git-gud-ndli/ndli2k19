@@ -4,12 +4,14 @@
     <CardCarousel />
     <v-divider dark></v-divider>
     <CardCarousel />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Banner from "../components/Banner";
 import CardCarousel from "../components/CardCarousel";
+import Footer from "../components/Footer";
 
 export default {
   data() {
@@ -36,7 +38,8 @@ export default {
   name: "home",
   components: {
     Banner,
-    CardCarousel
+    CardCarousel,
+    Footer
   },
   methods: {
     foo() {

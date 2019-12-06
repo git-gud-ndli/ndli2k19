@@ -1,16 +1,19 @@
 <template>
   <div class="cont">
-    <div class="text-center chip">
-      <v-row justify="center" align="center">
-        <v-chip class="ma-2" label color="purple" text-color="white">
-          <v-icon left>mdi-pound</v-icon>
+    <div class="chip">
+      <v-row align="center" class="flex-nowrap">
+        <v-chip
+          class="display-2 font-weight-bold text-uppercase ma-2"
+          label
+          large
+          color="transparent"
+          text-color="purple"
+        >
+          <v-icon left size="40px">mdi-pound</v-icon>
           {{ subject }}
         </v-chip>
         <v-chip class="ma-2" label color="purple" text-color="white">
-          <subscribe-button
-            color="purple"
-            text-color="white"
-          ></subscribe-button>
+          <subscribe-button></subscribe-button>
         </v-chip>
       </v-row>
     </div>
@@ -19,33 +22,29 @@
       show-arrows-on-hover
       class="carousel-cont"
       v-if="showCarousel"
+      height="1000px"
     >
       <v-carousel-item
         v-for="n in getCarouselNumber(cards)"
         :key="n"
-        fill-height
+        height="100%"
       >
-        <v-sheet color="indigo lighten-5" fill-height>
-          <v-container fluid fill-height>
-            <v-col cols="12">
-              <v-row class="justify-space-around">
-                <Card
-                  v-for="card in getRow(n - 1)[0]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col v-if="getConfig().itemsrow2" cols="12">
-              <v-row class="justify-space-around wrap">
-                <Card
-                  v-for="card in getRow(n - 1)[1]"
-                  :key="card.name"
-                  :cardData="card"
-                />
-              </v-row>
-            </v-col>
+        <v-sheet color="indigo lighten-5" height="100%">
+          <v-container fill-height>
+            <v-row style="justify-content: space-evenly;">
+              <Card
+                v-for="card in getRow(n - 1)[0]"
+                :key="card.name"
+                :cardData="card"
+              />
+            </v-row>
+            <v-row style="justify-content: space-evenly">
+              <Card
+                v-for="card in getRow(n - 1)[1]"
+                :key="card.name"
+                :cardData="card"
+              />
+            </v-row>
           </v-container>
         </v-sheet>
       </v-carousel-item>
@@ -78,7 +77,7 @@ export default {
           itemsrow2: 2
         },
         {
-          size: 1280,
+          size: 1903,
           itemsrow1: 4,
           itemsrow2: 3
         }
@@ -249,7 +248,7 @@ $screen-lg-min: 1200px
        @content
 
 .chip
-  width: 300px
+  width: fit-content
   @include sm
     position: absolute
     top: 10%
@@ -270,9 +269,6 @@ $screen-lg-min: 1200px
     left: 50%
     transform: translate(-50%,-50%)
     z-index: 1
-
-.carousel-cont
-  height: 1000px !important
 
 .cont
   position: relative
