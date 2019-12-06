@@ -36,7 +36,7 @@ client.on('notification', msg => {
         },
       );
       break;
-    case 'notif_new_question':
+    case 'notif_new_tag':
       client.query(
         'SELECT endpoint FROM internal.devices AS dev INNER JOIN internal.tag_sub AS t ON s.user_id = dev.user_id WHERE t.tag_id = $1',
         [msg.payload],
