@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import { vuexOidcCreateRouterMiddleware } from "vuex-oidc";
 import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
-import Question from "../views/Question.vue";
+import Question from "../views/QuestionPage.vue";
 import OidcCallback from "../components/OidcCallback";
 import store from "../store";
 
