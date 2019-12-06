@@ -27,11 +27,11 @@
         </v-col>
       </v-row>
     </v-card>
-    <v-card class="mx-auto ml-10 mt-5" outlined>
+    <v-card class="mx-auto ml-10 mt-5" v-bind:key="answer" v-for="answer in answers.nodes" outlined>
       <v-list-item three-line>
         <v-list-item-avatar tile size="60" color="grey"></v-list-item-avatar>
         <v-list-item-content>
-          <div class="overline mb-4">Jean-Réponse</div>
+          <div class="overline mb-4">{{ answer.author.name }}</div>
         </v-list-item-content>
       </v-list-item>
       <v-row class="pl-6">
@@ -40,7 +40,7 @@
         </v-col>
         <v-col cols="auto">
           <v-card-text>
-            Miskine
+            {{ answer.content }}
           </v-card-text>
         </v-col>
       </v-row>
@@ -73,6 +73,27 @@ export default {
           qid: parseInt(this.$route.params.slug, 10)
         };
       }
+    },
+    answers: {
+      query: gql`
+        query MyQuery($qid: Int!) {
+          answers: allAnswers(condition: { postId: $qid }) {
+            nodes {
+              userId
+              content
+              author {
+                name
+              }
+            }
+            totalCount
+          }
+        }
+      `,
+      variables() {
+        return {
+          qid: parseInt(this.$route.params.slug, 10)
+        };
+      }
     }
   },
   components: {
@@ -86,7 +107,7 @@ export default {
     },
     downvote() {
       //
-    },
+    }
   }
 };
 </script>
