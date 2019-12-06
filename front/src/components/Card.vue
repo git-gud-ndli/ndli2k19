@@ -34,7 +34,7 @@
         </v-list-item>
 
         <v-card-actions class="actions">
-          <router-link :to="{ name: 'question', params: {slug: cardData.slug } }">
+          <router-link style="text-decoration:none;" :to="{ name: 'question', params: {slug: cardData.slug } }">
             <v-btn
               small
               outlined
