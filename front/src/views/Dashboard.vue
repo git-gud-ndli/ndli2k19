@@ -34,12 +34,7 @@ export default {
   components: { QuestionForm },
   computed: {
     tiles() {
-      return [
-        { name: "Profile", icon: "mdi-account", url: "home" },
-        { name: "La bonne action", icon: "mdi-billiards-rack", url: "home" },
-        { name: "FlipFlop", icon: "mdi-diving-flippers", url: "home" },
-        { name: "ZioumBoumBoum", icon: "mdi-equalizer", url: "home" }
-      ];
+      return [];
     }
   }
 };
