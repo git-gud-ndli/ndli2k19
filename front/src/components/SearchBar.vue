@@ -2,7 +2,6 @@
   <div>
     <v-autocomplete
       :items="items"
-      v-model="value"
       label="Que cherchez-vous ?"
       chips
       multiple

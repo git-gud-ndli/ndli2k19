@@ -9,7 +9,7 @@
       <v-btn v-if="oidcUser" @click="logout" text color="white">
         Log Out
       </v-btn>
-      <v-btn :to="{ name: 'dashboard' }" text color="white">My Account</v-btn>
+      <v-btn :to="{ name: 'dashboard' }" text color="white">Mon compte</v-btn>
       <SettingsMenu />
       <v-avatar v-if="oidcUser" size="36px" class="ml-5">
         <img alt="Avatar" :src="oidcUser.picture" />

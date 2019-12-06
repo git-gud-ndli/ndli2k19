@@ -14,7 +14,7 @@ $$ LANGUAGE plpgsql;
 -- users
 CREATE TABLE IF NOT EXISTS internal.users (
   user_id serial PRIMARY KEY,
-  claim jsonb NOT NULL,
+  claim jsonb NOT NULL DEFAULT '{}',
   created_at timestamptz NOT NULL DEFAULT NOW(),
   updated_at timestamptz NOT NULL DEFAULT NOW()
 );
@@ -96,6 +96,8 @@ CREATE OR REPLACE VIEW api.questions AS
     posts.content
   FROM internal.questions
   JOIN internal.posts USING (post_id);
+COMMENT ON VIEW api.questions IS
+  E'@primaryKey question_id';
 
 CREATE OR REPLACE VIEW api.users AS
   SELECT
@@ -103,6 +105,8 @@ CREATE OR REPLACE VIEW api.users AS
     users.claim->>'picture' AS avatar,
     users.claim->>'name' AS name
   FROM internal.users;
+COMMENT ON VIEW api.users IS
+  E'@omit create,update,delete';
 
 -- devices
 CREATE TABLE IF NOT EXISTS api.devices (
@@ -114,7 +118,7 @@ CREATE TABLE IF NOT EXISTS api.devices (
 CREATE OR REPLACE FUNCTION internal.new_notify()
 RETURNS trigger AS $$
 BEGIN
-   PERFORM pg_notify('notif_new_post', NEW.post_id);
+   PERFORM pg_notify(CAST('notif_new_post' AS TEXT), NEW.post_id::TEXT);
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

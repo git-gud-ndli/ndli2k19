@@ -1,5 +1,5 @@
 /* eslint-disable */
-const API_ENDPOINT = "https://pwapi.rahveiz.fr";
+const API_ENDPOINT = "https://git-gud.fr";
 importScripts("scripts/localforage.min.js");
 
 /* Listen to SW update */
@@ -94,3 +94,30 @@ self.addEventListener("notificationclick", ({ notification, action }) => {
   }
 });
 
+/* BG SYNC */
+// self.addEventListener('sync', (event) => {
+//   event.waitUntil(
+//   localforage.getItem('token')
+//     .then(token => {
+//       if (event.tag === 'sync-locations') {
+//           loc_queue.iterate((val, key) => {
+//             fetch(`${API_ENDPOINT}/api/owner/locations/${key.split('-')[0]}`, {
+//               headers: {
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json',
+//                 'Authorization': `Bearer ${token}`
+//               },
+//               method: 'POST',
+//               mode: 'cors',
+//               cache: 'default',
+//               body: JSON.stringify({...val, deferred: true})
+//             })
+//             .then(() => {
+//               console.log('removing', key)
+//               loc_queue.removeItem(key)
+//             })
+//           })
+//       }
+//     })
+//   )
+// })

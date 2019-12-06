@@ -25,8 +25,14 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      isStale: "isStale"
+      isStale: "isStale",
+      dark: "isDark"
     })
+  },
+  created() {
+    this.$store.restored.then(() => {
+      this.$vuetify.theme.dark = this.dark;
+    });
   }
 };
 </script>

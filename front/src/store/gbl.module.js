@@ -9,7 +9,7 @@ export const gbl = {
       state.loading = val;
     },
     setTheme: (state, val) => {
-      state.theme = val;
+      state.dark = val;
     },
     setStale: (state, val) => {
       state.stale = val;
@@ -20,9 +20,7 @@ export const gbl = {
       commit("setLoading", !!val);
     },
     setTheme: ({ commit }, val) => {
-      if (val === "dark") {
-        commit("setTheme", true);
-      }
+      commit("setTheme", !!val);
     },
     setStale: ({ commit }, val) => {
       commit("setStale", val);
@@ -30,6 +28,7 @@ export const gbl = {
   },
   getters: {
     isLoading: state => state.loading,
-    isStale: state => state.stale
+    isStale: state => state.stale,
+    isDark: state => state.dark
   }
 };
