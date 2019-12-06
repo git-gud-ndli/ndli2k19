@@ -41,6 +41,25 @@
         </v-col>
       </v-row>
     </v-card>
+    <!-- Answer -->
+    <v-card class="mx-auto ml-10 mt-5" outlined>
+      <v-card-title primary-title>
+        Répondre à la question
+      </v-card-title>
+      <v-card-text>
+        <v-textarea
+          label="Votre réponse"
+          name="answer"
+          textarea
+          v-model="ansTxt"
+        >
+        </v-textarea>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="success" @click="answer">Envoyer</v-btn>
+      </v-card-actions>
+    </v-card>
   </v-container>
 </template>
 
@@ -66,15 +85,57 @@ export default {
           qid: parseInt(this.$route.params.slug, 10)
         };
       }
+    },
+    answers: {
+      query: gql`
+        query GetAnswers($qid: Int!) {
+          answers: answersByQuestionId(quesitonId: $qid) {
+            content
+            author {
+              name
+            }
+          }
+        }
+      `,
+      variables() {
+        return {
+          qid: parseInt(this.$route.params.slug, 10)
+        };
+      }
     }
   },
   computed: {},
+  data() {
+    return {
+      ansTxt: ""
+    };
+  },
   methods: {
     upvote() {
       //
     },
     downvote() {
       //
+    },
+    answer() {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation ans($qid: Int!, $c: String!) {
+            addAnswer(input: { questionId: $qid, content: $c }) {
+              answer {
+                content
+                author {
+                  name
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          questionId: parseInt(this.$route.params.id),
+          content: this.ansTxt
+        }
+      });
     }
   }
 };
